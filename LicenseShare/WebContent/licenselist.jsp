@@ -27,7 +27,7 @@
 <div align="center">
 <br>
 <table border="1">
-<tr><th>ID</th><th>資格名</th></tr>
+<tr><th>団体名</th><th>ID</th><th>資格名</th><th>受験料(税込)</th></tr>
 <%
 ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
 UserDAO user = new UserDAO();
@@ -35,8 +35,10 @@ LicenseDAO license = new LicenseDAO();
 for(LicenseBean record : licenseArray){
 %>
 <tr>
+<td><div align="center"><%=record.getLicensegroup()%></div></td>
 <td><div align="center"><%=record.getLicenseid()%></div></td>
 <td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=record.getLicensename()%></a></div></td>
+<td><div align="center"><%=record.getLicenseprice()%>円</div></td>
 </tr>
 <%
 }
@@ -57,6 +59,11 @@ for(LicenseBean record : licenseArray){
 <li><a href="ProfileServlet">プロフィール</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="CountRankingServlet">総受験回数ランキング</a></li>
+<li><a href="PassRankingServlet">総所持資格ランキング</a></li>
 </ul>
 
 <%

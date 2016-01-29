@@ -56,7 +56,7 @@ for(UserLicenseBean record : userlicenseArray){
 <tr>
 <td><div align="center"><%=record.getLicenseid()%></div></td>
 <td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=only.getLicensename(record.getLicenseid())%></a></div></td>
-<td><div align="center"><%=only.getLicensecount(record.getLicenseid(),request.getRemoteUser())%></div></td>
+<td><div align="center"><%=only.getLicenseusercount(record.getLicenseid(),request.getRemoteUser())%></div></td>
 
 <td><div align="center">
 <form action="UserLicenseDeleteServlet" method="post" onSubmit="return check()">
@@ -86,6 +86,11 @@ for(UserLicenseBean record : userlicenseArray){
 <li><a href="ProfileServlet">プロフィール</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="CountRankingServlet">総受験回数ランキング</a></li>
+<li><a href="PassRankingServlet">総所持資格ランキング</a></li>
 </ul>
 
 <%

@@ -3,14 +3,13 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%@ page import="sougou.*"%>
+<%@ page import="sougou.link.*"%>
 <%@ page import="sougou.dao.*"%>
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico"/>
-</script>
 <style type="text/css">
 p.br { line-height: 50%; }
 </style>
@@ -20,27 +19,37 @@ p.br { line-height: 50%; }
 <div id="container">
 
 <br>
-<jsp:useBean id="LicenseDataBean" class="sougou.LicenseDataBean" scope="session" />
+<%
+OnlyDAO only = new OnlyDAO();
+%>
 <div id="contents">
 
 <div id="main">
 
-<%
-ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
-LicenseBean record=new LicenseBean();
-String licenseid = (String)session.getAttribute("licenseid");
-UserDAO user = new UserDAO();
-LicenseDAO license = new LicenseDAO();
-OnlyDAO only = new OnlyDAO();
-%>
-
 <section>
-<h2><%= only.getLicensename(licenseid) %></h2>
+<h2>　</h2>
 <div align="center">
-<br>
-<p class="br">団体名:<%= only.getLicensegroup(licenseid) %></p>
-<p class="br">受験料:<%= only.getLicenseprice(licenseid) %>円(税込)</p>
-<p class="br">登録日:<%= only.getLicensecreatedate(licenseid) %></p>
+<p class="br"></p>
+<p class="br"><table border="1"><th>総所持資格ランキング</th></table></p>
+<table border="1">
+<tr><th>順位</th><th>ID</th><th>個数</th></tr>
+<jsp:useBean id="UserDataBean" class="sougou.UserDataBean" scope="session" />
+<%
+ArrayList<UserBean> userArray = UserDataBean.getUserArray();
+UserDAO user = new UserDAO();
+int rank=1;
+for(UserBean record : userArray){
+%>
+<tr>
+<td><div align="center"><%=rank%></div></td>
+<td><div align="center"><%=record.getUserid()%></div></td>
+<td><div align="center"><%=record.getPass()%>個</div></td>
+</tr>
+<%
+rank++;
+}
+%>
+</table>
 <br>
 </div>
 </div>

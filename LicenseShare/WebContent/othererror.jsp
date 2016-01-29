@@ -5,19 +5,6 @@
 <title>LicenseShare</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico"/>
-<script language="JavaScript">
-<!--
-window.onload = function (){
-    var list = document.getElementsByTagName("input");
-    for(var i=0; i<list.length; i++){
-    if(list[i].type == 'text' || list[i].type == 'password'){
-        list[i].onkeypress = function (event){
-            return submitStop(event);
-        };
-    }
-}
--->
-</script>
 </head>
 <body id="top">
 
@@ -51,6 +38,11 @@ String e=(String)session.getAttribute("Except");
 <li><a href="ProfileServlet">プロフィール</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="CountRankingServlet">総受験回数ランキング</a></li>
+<li><a href="PassRankingServlet">総所持資格ランキング</a></li>
 </ul>
 
 <%

@@ -46,6 +46,8 @@ function check(){
 <th>資格名</th>
 <th>団体名</th>
 <th>受験料</th>
+<th>受験回数</th>
+<th>合格者数</th>
 <th>更新</th>
 <th>削除</th>
 </tr>
@@ -70,7 +72,15 @@ for(LicenseBean record : licenseArray){
 </div></td>
 
 <td><div align="center">
-<%=only.getLicenseprice(record.getLicenseid())%>
+<%=only.getLicenseprice(record.getLicenseid())%>円
+</div></td>
+
+<td><div align="center">
+<%=only.getLicensecount(record.getLicenseid())%>回
+</div></td>
+
+<td><div align="center">
+<%=only.getLicensepass(record.getLicenseid())%>人
 </div></td>
 
 <td><div align="center">

@@ -64,6 +64,11 @@ String userid = request.getRemoteUser();
 <li><a href="logout.jsp">ログアウト</a></li>
 </ul>
 
+<ul class="submenu mb10">
+<li><a href="CountRankingServlet">総受験回数ランキング</a></li>
+<li><a href="PassRankingServlet">総所持資格ランキング</a></li>
+</ul>
+
 <%
 if(request.isUserInRole("admin")==true){
 %>

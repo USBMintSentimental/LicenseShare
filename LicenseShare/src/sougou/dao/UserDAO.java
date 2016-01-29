@@ -25,6 +25,7 @@ public class UserDAO extends DAOBase {
                 record.setUserid(rs.getString(DatabaseParameters.USER_ID));
                 record.setUsername(rs.getString(DatabaseParameters.USER_NAME));
                 record.setPasswd(rs.getString(DatabaseParameters.PASSWORD));
+                record.setPass(rs.getInt(DatabaseParameters.PASS));
                 userArray.addUser(record);
             }
         }

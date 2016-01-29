@@ -10,6 +10,8 @@ public class LicenseBean implements Serializable {
 	private String licensename;
 	private String licensegroup;
 	private int licenseprice;
+	private int licensecount;
+	private int licensepass;
 	private Date datetime;
 	
 	public LicenseBean() {
@@ -54,6 +56,22 @@ public class LicenseBean implements Serializable {
 	
 	public void setLicenseprice(int licenseprice) {
 		this.licenseprice = licenseprice;
+	}
+	
+	public int getLicensecount() {
+		return licensecount;
+	}
+	
+	public void setLicensecount(int licensecount) {
+		this.licensecount = licensecount;
+	}
+	
+	public int getLicensepass() {
+		return licensepass;
+	}
+	
+	public void setLicensepass(int licensepass) {
+		this.licensepass = licensepass;
 	}
 	
 	public Date getDatetime() {

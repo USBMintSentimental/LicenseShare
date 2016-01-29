@@ -25,8 +25,64 @@ public class LicenseDAO extends DAOBase {
             ResultSet rs = stmt.executeQuery(DatabaseParameters.SQL_SELECT_LICENSE);
             while (rs.next()) {
                 LicenseBean record = new LicenseBean();
+                record.setLicensegroup(rs.getString(DatabaseParameters.LICENSE_GROUP));
                 record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
                 record.setLicensename(rs.getString(DatabaseParameters.LICENSE_NAME));
+                record.setLicenseprice(rs.getInt(DatabaseParameters.LICENSE_PRICE));
+                licenseArray.addLicense(record);
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return licenseArray;
+    }
+	
+	public LicenseDataBean getLicenseCountData() throws DatabaseException, SystemException {
+        Statement stmt = null;
+        LicenseDataBean licenseArray = new LicenseDataBean();
+        this.open();
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(DatabaseParameters.SQL_SELECT_LICENSE_ALL_COUNT);
+            while (rs.next()) {
+                LicenseBean record = new LicenseBean();
+                record.setLicensegroup(rs.getString(DatabaseParameters.LICENSE_GROUP));
+                record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
+                record.setLicensename(rs.getString(DatabaseParameters.LICENSE_NAME));
+                record.setLicenseprice(rs.getInt(DatabaseParameters.LICENSE_PRICE));
+                record.setLicensecount(rs.getInt(DatabaseParameters.LICENSE_COUNT));
+                licenseArray.addLicense(record);
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return licenseArray;
+    }
+	
+	public LicenseDataBean getLicensePassData() throws DatabaseException, SystemException {
+        Statement stmt = null;
+        LicenseDataBean licenseArray = new LicenseDataBean();
+        this.open();
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(DatabaseParameters.SQL_SELECT_LICENSE_ALL_PASS);
+            while (rs.next()) {
+                LicenseBean record = new LicenseBean();
+                record.setLicensegroup(rs.getString(DatabaseParameters.LICENSE_GROUP));
+                record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
+                record.setLicensename(rs.getString(DatabaseParameters.LICENSE_NAME));
+                record.setLicenseprice(rs.getInt(DatabaseParameters.LICENSE_PRICE));
+                record.setLicensepass(rs.getInt(DatabaseParameters.LICENSE_PASS));
                 licenseArray.addLicense(record);
             }
         }
@@ -73,7 +129,9 @@ public class LicenseDAO extends DAOBase {
 			stmt.setString(2, license.getLicenseid());
 			stmt.setString(3, license.getLicensename());
 			stmt.setInt(4, license.getLicenseprice());
-			stmt.setString(5, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(license.getDatetime()));
+			stmt.setInt(5, license.getLicensecount());
+			stmt.setInt(6, license.getLicensepass());
+			stmt.setString(7, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(license.getDatetime()));
 			stmt.executeUpdate();
 		}
 		catch(SQLException e){
@@ -111,8 +169,10 @@ public class LicenseDAO extends DAOBase {
 		this.open();
 		try {
 			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_LICENSE);
-			stmt.setString(1, license.getLicensename());
-			stmt.setString(2, license.getLicenseid());
+			stmt.setString(1, license.getLicensegroup());
+			stmt.setString(2, license.getLicensename());
+			stmt.setInt(3, license.getLicenseprice());
+			stmt.setString(4, license.getLicenseid());
 			stmt.executeUpdate();
 		}
 		catch(SQLException e){

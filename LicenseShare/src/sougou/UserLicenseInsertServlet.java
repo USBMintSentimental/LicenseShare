@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import sougou.dao.LicenseDAO;
+import sougou.dao.OnlyDAO;
 import sougou.exception.DatabaseException;
 import sougou.exception.SystemException;
 
@@ -38,7 +39,11 @@ public class UserLicenseInsertServlet extends HttpServlet {
 			licenseBean.setComment(comment);
 			licenseBean.setDatetime(date);
 			LicenseDAO dao = new LicenseDAO();
+			OnlyDAO only = new OnlyDAO();
 			dao.insertUserLicense(licenseBean);
+			only.updateLicensecount(licenseid,count);
+			only.updateLicensepass(licenseid);
+			only.updateUserpass(userid);
 			getServletContext().getRequestDispatcher("/addlicense.jsp").forward(request,response);
 		}
 		catch(SystemException e){

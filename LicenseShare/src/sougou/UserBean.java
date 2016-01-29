@@ -8,6 +8,7 @@ public class UserBean implements Serializable {
 	private String username;
 	private String passwd;
 	private String role;
+	private int pass;
 	
 	public UserBean() {
 		
@@ -43,6 +44,14 @@ public class UserBean implements Serializable {
 	
 	public void setRole(String role) {
 		this.role = role;
+	}
+	
+	public int getPass() {
+		return pass;
+	}
+	
+	public void setPass(int pass) {
+	this.pass = pass;
 	}
 	
 }

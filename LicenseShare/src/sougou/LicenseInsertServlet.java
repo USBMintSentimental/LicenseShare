@@ -36,6 +36,8 @@ public class LicenseInsertServlet extends HttpServlet {
 			licenseBean.setLicensename(licensename);
 			licenseBean.setLicensegroup(licensegroup);
 			licenseBean.setLicenseprice(licenseprice);
+			licenseBean.setLicensecount(0);
+			licenseBean.setLicensepass(0);
 			licenseBean.setDatetime(date);
 			dao.insertLicense(licenseBean);
 			getServletContext().getRequestDispatcher("/admin.jsp").forward(request,response);

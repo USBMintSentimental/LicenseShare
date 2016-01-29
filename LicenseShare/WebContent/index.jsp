@@ -1,24 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="sougou.dao.*"%>
-<html>
+<%@ page import="java.io.FileReader"%>
+<%@ page import="java.io.BufferedReader"%>
+<%@ page import="java.io.IOException"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico"/>
-<script language="JavaScript">
-<!--
-window.onload = function (){
-    var list = document.getElementsByTagName("input");
-    for(var i=0; i<list.length; i++){
-    if(list[i].type == 'text' || list[i].type == 'password'){
-        list[i].onkeypress = function (event){
-            return submitStop(event);
-        };
-    }
-}
--->
-</script>
 <style type="text/css">
 p.br { line-height: 50%; }
 </style>
@@ -54,6 +43,11 @@ OnlyDAO only = new OnlyDAO();
 <li><a href="ProfileServlet">プロフィール</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="CountRankingServlet">総受験回数ランキング</a></li>
+<li><a href="PassRankingServlet">総所持資格ランキング</a></li>
 </ul>
 
 <%

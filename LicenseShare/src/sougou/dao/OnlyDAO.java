@@ -137,7 +137,7 @@ public class OnlyDAO extends DAOBase {
     }
 	
 	public int getLicenseprice(String licenseid) throws DatabaseException,SystemException {
-        int price=0;
+        int integer=0;
         PreparedStatement stmt = null;
         this.open();
         try {
@@ -145,7 +145,7 @@ public class OnlyDAO extends DAOBase {
             stmt.setString(1, licenseid);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            price=(rs.getInt(DatabaseParameters.LICENSE_PRICE));
+            integer=(rs.getInt(DatabaseParameters.LICENSE_PRICE));
         }
         catch (SQLException e){
             throw new DatabaseException(
@@ -154,20 +154,41 @@ public class OnlyDAO extends DAOBase {
         finally{
             this.close(stmt);
         }
-        return price;
+        return integer;
     }
 	
-	public int getLicensecount(String licenseid,String userid) throws DatabaseException,SystemException {
-        int price=0;
+	public int getLicenseusercount(String licenseid,String userid) throws DatabaseException,SystemException {
+        int integer=0;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_USER_LICENSE_COUNT);
+            stmt.setString(1, licenseid);
+            stmt.setString(2, userid);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            integer=(rs.getInt(DatabaseParameters.COUNT));
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return integer;
+    }
+	
+	public int getLicensecount(String licenseid) throws DatabaseException,SystemException {
+        int integer=0;
         PreparedStatement stmt = null;
         this.open();
         try {
             stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_LICENSE_COUNT);
             stmt.setString(1, licenseid);
-            stmt.setString(2, userid);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            price=(rs.getInt(DatabaseParameters.COUNT));
+            integer=(rs.getInt(DatabaseParameters.LICENSE_COUNT));
         }
         catch (SQLException e){
             throw new DatabaseException(
@@ -176,6 +197,96 @@ public class OnlyDAO extends DAOBase {
         finally{
             this.close(stmt);
         }
-        return price;
+        return integer;
     }
+	
+	public int getLicensepass(String licenseid) throws DatabaseException,SystemException {
+        int integer=0;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_LICENSE_PASS);
+            stmt.setString(1, licenseid);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            integer=(rs.getInt(DatabaseParameters.LICENSE_PASS));
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return integer;
+    }
+	
+	public void updateLicensecount(String licenseid,int count) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_LICENSE_COUNT);
+			stmt.setInt(1, count);
+			stmt.setString(2, licenseid);
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
+	
+	public void updateLicensepass(String licenseid) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_LICENSE_PASS);
+			stmt.setString(1, licenseid);
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
+	
+	public void updateUserpass(String userid) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_USER_PASS);
+			stmt.setString(1, userid);
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
+	
+	public void deleteUserpass(String userid) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_DELETE_USER_PASS);
+			stmt.setString(1, userid);
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
 }

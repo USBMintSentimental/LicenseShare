@@ -3,14 +3,13 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%@ page import="sougou.*"%>
+<%@ page import="sougou.link.*"%>
 <%@ page import="sougou.dao.*"%>
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
 <link rel="stylesheet" href="css/style.css">
 <link rel="shortcut icon" href="images/favicon.ico"/>
-</script>
 <style type="text/css">
 p.br { line-height: 50%; }
 </style>
@@ -20,27 +19,41 @@ p.br { line-height: 50%; }
 <div id="container">
 
 <br>
-<jsp:useBean id="LicenseDataBean" class="sougou.LicenseDataBean" scope="session" />
+<%
+OnlyDAO only = new OnlyDAO();
+%>
 <div id="contents">
 
 <div id="main">
 
+<section>
+<h2>　</h2>
+<div align="center">
+<p class="br"></p>
+<p class="br"><table border="1"><th>総受験回数ランキング</th></table></p>
+<table border="1">
+<tr><th>順位</th><th>団体名</th><th>ID</th><th>資格名</th><th>受験料(税込)</th><th>受験回数</th></tr>
+<jsp:useBean id="LicenseDataBean" class="sougou.LicenseDataBean" scope="session" />
 <%
 ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
-LicenseBean record=new LicenseBean();
-String licenseid = (String)session.getAttribute("licenseid");
 UserDAO user = new UserDAO();
 LicenseDAO license = new LicenseDAO();
-OnlyDAO only = new OnlyDAO();
+int rank=1;
+for(LicenseBean record : licenseArray){
 %>
-
-<section>
-<h2><%= only.getLicensename(licenseid) %></h2>
-<div align="center">
-<br>
-<p class="br">団体名:<%= only.getLicensegroup(licenseid) %></p>
-<p class="br">受験料:<%= only.getLicenseprice(licenseid) %>円(税込)</p>
-<p class="br">登録日:<%= only.getLicensecreatedate(licenseid) %></p>
+<tr>
+<td><div align="center"><%=rank%></div></td>
+<td><div align="center"><%=record.getLicensegroup()%></div></td>
+<td><div align="center"><%=record.getLicenseid()%></div></td>
+<td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=record.getLicensename()%></a></div></td>
+<td><div align="center"><%=record.getLicenseprice()%>円</div></td>
+<td><div align="center"><%=record.getLicensecount()%>回</div></td>
+</tr>
+<%
+rank++;
+}
+%>
+</table>
 <br>
 </div>
 </div>
