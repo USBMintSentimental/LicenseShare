@@ -42,7 +42,7 @@ public class DatabaseParameters {
 	public static final String SQL_SELECT_USER_PASS = "SELECT * FROM User ORDER BY PASS DESC LIMIT 5";
 	public static final String SQL_DELETE_LICENSE = "DELETE FROM License WHERE LICENSE_ID=?";
 	
-	public static final String SQL_SELECT_ALL_USER_LICENSE = "SELECT * FROM Syutoku";
+	public static final String SQL_SELECT_ALL_USER_LICENSE = "SELECT * FROM Syutoku ORDER BY LICENSE_ID DESC";
 	
 	public static final String SQL_INSERT_USER_LICENSE = "INSERT INTO Syutoku VALUES(?,?,?,?,?)";
 	public static final String SQL_SELECT_USER_LICENSE = "SELECT LICENSE_NAME FROM License WHERE LICENSE_ID=?";
