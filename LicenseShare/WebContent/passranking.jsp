@@ -33,7 +33,7 @@ OnlyDAO only = new OnlyDAO();
 <p class="br"></p>
 <p class="br"><table border="1"><th>総所持資格ランキング</th></table></p>
 <table border="1">
-<tr><th>順位</th><th>ID</th><th>個数</th></tr>
+<tr><th>順位</th><th>ユーザーID</th><th>資格数</th></tr>
 <jsp:useBean id="UserDataBean" class="sougou.UserDataBean" scope="session" />
 <%
 ArrayList<UserBean> userArray = UserDataBean.getUserArray();

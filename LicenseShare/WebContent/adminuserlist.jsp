@@ -42,7 +42,7 @@ function check(){
 <br>
 <table border="1">
 <tr>
-<th>ID</th>
+<th>ユーザーID</th>
 <th>ユーザー名</th>
 <th>ロール</th>
 <th>更新</th>

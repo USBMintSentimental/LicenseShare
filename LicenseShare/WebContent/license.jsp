@@ -17,7 +17,7 @@ p.br{
 	line-height: 50%;
 }
 div.br{
-　　　　width: 700px;
+　　　　width: 350px;
 　　　　word-wrap: break-word;
 }
 </style>
@@ -41,27 +41,35 @@ OnlyDAO only = new OnlyDAO();
 %>
 
 <section>
-<h2><%= only.getLicensename(licenseid) %></h2>
+<h2>　</h2>
 <div align="center">
 <br>
-<p class="br">団体名:<%= only.getLicensegroup(licenseid) %></p>
-<p class="br">受験料:<%= only.getLicenseprice(licenseid) %>円(税込)</p>
-<p class="br">登録日:<%= only.getLicensecreatedate(licenseid) %></p>
-<br>
+<table border="1">
+<tr><th>団体名</th><td><div align="center"><%= only.getLicensegroup(licenseid) %></div></td></tr>
+<tr><th>資格ID</th><td><div align="center"><%= licenseid %></div></td></tr>
+<tr><th>資格名</th><td><div align="center"><%= only.getLicensename(licenseid) %></div></td></tr>
+<tr><th>受験料(税込)</th><td><div align="center"><%= only.getLicenseprice(licenseid) %>円</div></td></tr>
+</table>
+<p class="br"></p>
+<table border="1">
+<tr><th>ユーザーID</th><th>感想</th></tr>
 <%
 for(UserLicenseBean record : userlicenseArray){
 	if(licenseid.equals(record.getLicenseid())){
+		if(record.getComment().equals("")){
+		}else{
 %>
-
-<p class="br">
-<%= record.getUserid() %>
-<div class="br"><%= record.getComment() %></div>
-</p>
-
+<tr>
+<td><div align="center"><%= record.getUserid() %></div></td>
+<td><div class="br"><%= record.getComment() %></div></td>
+</tr>
 <%
 }
 }
+}
 %>
+</table>
+<br>
 </div>
 </div>
 <!--/main-->

@@ -42,10 +42,10 @@ function check(){
 <br>
 <table border="1">
 <tr>
-<th>ID</th>
+<th>資格ID</th>
 <th>資格名</th>
 <th>団体名</th>
-<th>受験料</th>
+<th>受験料(税込)</th>
 <th>受験回数</th>
 <th>合格者数</th>
 <th>更新</th>
