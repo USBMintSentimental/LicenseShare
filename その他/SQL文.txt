@@ -35,6 +35,10 @@ ROLE VARCHAR(100) NOT NULL,
 PRIMARY KEY(USER_ID,ROLE)
 );
 
+CREATE TABLE Counter(
+COUNTER INT(100) NOT NULL
+);
+
 GRANT ALL PRIVILEGES ON LicenseShare.*
 TO user@localhost IDENTIFIED BY 'password';
 
@@ -43,6 +47,8 @@ INSERT INTO Role VALUES('admin','admin');
 
 INSERT INTO User VALUES('user','ユーザー','user',0);
 INSERT INTO Role VALUES('user','user');
+
+INSERT INTO Counter VALUES(0);
 
 INSERT INTO License VALUES('IPA','IP','ITパスポート',5700,0,0,'2016/01/25');
 INSERT INTO License VALUES('IPA','SG','情報セキュリティマネジメント試験',5700,0,0,'2016/01/25');
@@ -57,13 +63,13 @@ INSERT INTO License VALUES('IPA','ES','エンベデッドシステムスペシャリスト試験',5
 INSERT INTO License VALUES('IPA','SC','情報セキュリティスペシャリスト試験',5700,0,0,'2016/01/28');
 INSERT INTO License VALUES('IPA','SM','ITサービスマネージャ試験',5700,0,0,'2016/01/28');
 INSERT INTO License VALUES('IPA','AU','システム監査技術者試験',5700,0,0,'2016/01/28');
-INSERT INTO License VALUES('Oracle','1Z0-018','Bronze DBA11g(割引)',21546V,'2016/01/26');
+INSERT INTO License VALUES('Oracle','1Z0-018','Bronze DBA11g(割引)',21546,0,0,'2016/01/26');
 INSERT INTO License VALUES('Oracle','1Z0-051','11g SQL基礎I(割引)',11016,0,0,'2016/1/26');
 INSERT INTO License VALUES('Oracle','1Z0-052','Silver DBA11g(割引)',21546,0,0,'2016/1/26');
 INSERT INTO License VALUES('Oracle','1Z0-053','Gold DBA11g(割引)',21546,0,0,'2016/01/26');
 INSERT INTO License VALUES('Oracle','1Z0-802','Java SE 7 Bronze(割引)',11016,0,0,'2016/01/26');
 INSERT INTO License VALUES('Oracle','1Z0-803','Java SE 7 Silver(割引)',21546,0,0,'2016/01/26');
-INSERT INTO License VALUES('Oracle','1Z0-803','Java SE 7 Gold(割引)',21546,0,0,'2016/01/26');
+INSERT INTO License VALUES('Oracle','1Z0-804','Java SE 7 Gold(割引)',21546,0,0,'2016/01/26');
 INSERT INTO License VALUES('Microsoft','70-640','MCP(割引)',10584,0,0,'2016/01/28');
 INSERT INTO License VALUES('Microsoft','M-244','Word 2010',6480,0,0,'2016/01/28');
 INSERT INTO License VALUES('Microsoft','M-245','Word 2010 Expert',6480,0,0,'2016/01/28');
