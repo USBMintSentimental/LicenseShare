@@ -289,4 +289,40 @@ public class OnlyDAO extends DAOBase {
 			this.close(stmt);
 		}
 	}
+	
+	public int getAccesscounter() throws DatabaseException,SystemException {
+        int integer=0;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_COUNTER);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            integer=(rs.getInt(DatabaseParameters.COUNTER));
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return integer;
+    }
+	
+	public void setAccesscounter() throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_COUNTER);
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
 }

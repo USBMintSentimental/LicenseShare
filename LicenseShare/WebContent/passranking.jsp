@@ -5,6 +5,7 @@
 <%@ page import="sougou.*"%>
 <%@ page import="sougou.link.*"%>
 <%@ page import="sougou.dao.*"%>
+<%@ page import="java.text.DecimalFormat"%>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
@@ -65,6 +66,14 @@ rank++;
 <li><a href="ProfileServlet">プロフィール</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
+</ul>
+
+<%
+DecimalFormat df = new DecimalFormat("000000");
+only.setAccesscounter();
+%>
+<ul class="submenu mb10">
+<li><a href="#"><%= df.format(only.getAccesscounter()) %></a></li>
 </ul>
 
 <ul class="submenu mb10">

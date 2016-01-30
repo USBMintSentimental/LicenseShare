@@ -18,6 +18,11 @@ public class DatabaseParameters {
 	public static final String LICENSE_COUNT = "LICENSE_COUNT";
 	public static final String LICENSE_PASS = "LICENSE_PASS";
 	
+	public static final String COUNTER = "COUNTER";
+	
+	public static final String SQL_SELECT_COUNTER = "SELECT COUNTER FROM Counter";
+	public static final String SQL_UPDATE_COUNTER = "UPDATE Counter SET COUNTER = COUNTER+1";
+	
 	public static final String SQL_SELECT_USER = "SELECT * FROM User";
 	public static final String SQL_SELECT_PERSON_USER = "SELECT * FROM User,Role WHERE User.USER_ID = Role.USER_ID AND User.USER_ID=?";
 	public static final String SQL_UPDATE_USER = "UPDATE User SET USER_NAME=?,PASSWORD=? WHERE USER_ID=?";
