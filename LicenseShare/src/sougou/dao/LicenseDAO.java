@@ -107,6 +107,7 @@ public class LicenseDAO extends DAOBase {
                 UserLicenseBean record = new UserLicenseBean();
                 record.setUserid(rs.getString(DatabaseParameters.USER_ID));
                 record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
+                record.setComment(rs.getString(DatabaseParameters.COMMENT));
                 userlicenseArray.addUserLicense(record);
             }
         }

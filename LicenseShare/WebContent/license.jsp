@@ -13,7 +13,13 @@
 <link rel="shortcut icon" href="images/favicon.ico"/>
 </script>
 <style type="text/css">
-p.br { line-height: 50%; }
+p.br{ 
+	line-height: 50%;
+}
+div.br{
+　　　　width: 700px;
+　　　　word-wrap: break-word;
+}
 </style>
 </head>
 <body id="top">
@@ -21,14 +27,13 @@ p.br { line-height: 50%; }
 <div id="container">
 
 <br>
-<jsp:useBean id="LicenseDataBean" class="sougou.LicenseDataBean" scope="session" />
+<jsp:useBean id="UserLicenseDataBean" class="sougou.UserLicenseDataBean" scope="session" />
 <div id="contents">
 
 <div id="main">
 
 <%
-ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
-LicenseBean record=new LicenseBean();
+ArrayList<UserLicenseBean> userlicenseArray = UserLicenseDataBean.getUserLicenseArray();
 String licenseid = (String)session.getAttribute("licenseid");
 UserDAO user = new UserDAO();
 LicenseDAO license = new LicenseDAO();
@@ -43,6 +48,20 @@ OnlyDAO only = new OnlyDAO();
 <p class="br">受験料:<%= only.getLicenseprice(licenseid) %>円(税込)</p>
 <p class="br">登録日:<%= only.getLicensecreatedate(licenseid) %></p>
 <br>
+<%
+for(UserLicenseBean record : userlicenseArray){
+	if(licenseid.equals(record.getLicenseid())){
+%>
+
+<p class="br">
+<%= record.getUserid() %>
+<div class="br"><%= record.getComment() %></div>
+</p>
+
+<%
+}
+}
+%>
 </div>
 </div>
 <!--/main-->
