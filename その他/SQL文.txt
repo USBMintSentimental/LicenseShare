@@ -1,3 +1,5 @@
+DROP DATABASE LicenseShare;
+
 CREATE DATABASE LicenseShare;
 USE LicenseShare;
 
