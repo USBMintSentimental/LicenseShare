@@ -27,10 +27,13 @@ OnlyDAO only = new OnlyDAO();
 
 <section>
 <h2>　</h2>
-<div align="center">
 <br>
-<p class="br">ようこそ、<%= only.getUsername(request.getRemoteUser()) %>さん。</p>
-</div>
+<p style="position: relative;">
+   <img src="images/index.png"><br>
+   <span style="position: absolute; line-height: 125%; top: 30px; left: 35px; width: 360px;">
+   a
+   </span>
+</p>
 </div>
 <!--/main-->
 
