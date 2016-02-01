@@ -34,7 +34,7 @@ public class UserUpdateServlet extends HttpServlet {
 				if(newpasswd1.equals(newpasswd2)){
 					user = new UserBean();
 					user.setUsername(username);
-					user.setPasswd(newpasswd2);
+					user.setPassword(newpasswd2);
 					user.setUserid(userid);
 					UserDAO dao = new UserDAO();
 					dao.updateUser(user);

@@ -7,10 +7,10 @@ public class UserLicenseBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userid;
 	private String licenseid;
-	private String comment;
-	private int count;
+	private String licensecomment;
+	private String licensepass;
+	private int licensecount;
 	private Date datetime;
-	private String pass;
 	
 	public UserLicenseBean() {
 		
@@ -32,28 +32,28 @@ public class UserLicenseBean implements Serializable {
 		this.licenseid = licenseid;
 	}
 		
-	public String getComment() {
-		return comment;
+	public String getLicensecomment() {
+		return licensecomment;
 	}
 	
-	public void setComment(String comment) {
-		this.comment = comment;
+	public void setLicensecomment(String licensecomment) {
+		this.licensecomment = licensecomment;
 	}
 	
-	public int getCount() {
-		return count;
+	public int getLicensecount() {
+		return licensecount;
 	}
 	
-	public void setCount(int count) {
-		this.count = count;
+	public void setLicensecount(int licensecount) {
+		this.licensecount = licensecount;
 	}
 	
-	public String getPass() {
-		return pass;
+	public String getLicensepass() {
+		return licensepass;
 	}
 	
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setLicensepass(String licensepass) {
+		this.licensepass = licensepass;
 	}
 	
 	public Date getDatetime() {

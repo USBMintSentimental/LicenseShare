@@ -28,13 +28,16 @@ public class UserLicenseDeleteServlet extends HttpServlet {
 		try {
 			String licenseid = request.getParameter("licenseid");
 			String userid = request.getParameter("userid");
+			String licensepass = request.getParameter("licensepass");
 			licenseBean = new LicenseBean();
 			licenseBean.setLicenseid(licenseid);
 			licenseBean.setUserid(userid);
 			LicenseDAO dao = new LicenseDAO();
 			OnlyDAO only = new OnlyDAO();
 			dao.deleteUserLicense(licenseBean);
-			only.deleteUserpass(userid);
+			if(licensepass.equals("çáäi")){
+				only.deleteUserpass(userid);
+			}
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 		}
 		catch(SystemException e){

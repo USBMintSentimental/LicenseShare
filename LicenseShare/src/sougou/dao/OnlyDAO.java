@@ -167,7 +167,7 @@ public class OnlyDAO extends DAOBase {
             stmt.setString(2, userid);
             ResultSet rs = stmt.executeQuery();
             rs.next();
-            integer=(rs.getInt(DatabaseParameters.COUNT));
+            integer=(rs.getInt(DatabaseParameters.LICENSE_COUNT));
         }
         catch (SQLException e){
             throw new DatabaseException(

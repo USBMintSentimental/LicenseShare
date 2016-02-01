@@ -6,7 +6,7 @@ public class UserBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userid;
 	private String username;
-	private String passwd;
+	private String password;
 	private String role;
 	private int pass;
 	
@@ -30,12 +30,12 @@ public class UserBean implements Serializable {
 		this.username = username;
 	}
 	
-	public String getPasswd() {
-		return passwd;
+	public String getPassword() {
+		return password;
 	}
 	
-	public void setPasswd(String passwd) {
-	this.passwd = passwd;
+	public void setPassword(String password) {
+	this.password = password;
 	}
 	
 	public String getRole() {

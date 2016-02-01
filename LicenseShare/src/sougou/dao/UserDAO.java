@@ -24,8 +24,8 @@ public class UserDAO extends DAOBase {
                 UserBean record = new UserBean();
                 record.setUserid(rs.getString(DatabaseParameters.USER_ID));
                 record.setUsername(rs.getString(DatabaseParameters.USER_NAME));
-                record.setPasswd(rs.getString(DatabaseParameters.PASSWORD));
-                record.setPass(rs.getInt(DatabaseParameters.PASS));
+                record.setPassword(rs.getString(DatabaseParameters.PASSWORD));
+                record.setPass(rs.getInt(DatabaseParameters.LICENSE_PASS));
                 userArray.addUser(record);
             }
         }
@@ -50,7 +50,7 @@ public class UserDAO extends DAOBase {
 			rs.next();
 			record = new UserBean();
 			record.setUserid(rs.getString(DatabaseParameters.USER_ID));
-			record.setPasswd(rs.getString(DatabaseParameters.PASSWORD));
+			record.setPassword(rs.getString(DatabaseParameters.PASSWORD));
 			record.setRole(rs.getString(DatabaseParameters.ROLE));
 		}
 		catch (SQLException e){
@@ -69,7 +69,7 @@ public class UserDAO extends DAOBase {
 		try {
 			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_USER);
 			stmt.setString(1, user.getUsername());
-			stmt.setString(2, user.getPasswd());
+			stmt.setString(2, user.getPassword());
 			stmt.setString(3, user.getUserid());
 			stmt.executeUpdate();
 			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_ROLE);

@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>LicenseShare</display-name>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.htm</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <security-constraint>
     <web-resource-collection>
@@ -24,13 +19,16 @@
       <url-pattern>/UserLicenseInsertServlet</url-pattern>
       <url-pattern>/License</url-pattern>
       <url-pattern>/AddLicenseServlet</url-pattern>
+      <url-pattern>/CountRankingServlet</url-pattern>
       <url-pattern>/LicenseListServlet</url-pattern>
+      <url-pattern>/PassRankingServlet</url-pattern>
       <url-pattern>/ProfileServlet</url-pattern>
       <url-pattern>/css/*</url-pattern>
       <url-pattern>/images/*</url-pattern>
       <url-pattern>/js/*</url-pattern>
       <url-pattern>/addlicense.jsp</url-pattern>
       <url-pattern>/config.jsp</url-pattern>
+      <url-pattern>/countranking.jsp</url-pattern>
       <url-pattern>/error.jsp</url-pattern>
       <url-pattern>/index.jsp</url-pattern>
       <url-pattern>/license.jsp</url-pattern>
@@ -39,6 +37,7 @@
       <url-pattern>/loginerror.jsp</url-pattern>
       <url-pattern>/logout.jsp</url-pattern>
       <url-pattern>/othererror.jsp</url-pattern>
+      <url-pattern>/passranking.jsp</url-pattern>
       <url-pattern>/profile.jsp</url-pattern>
     </web-resource-collection>
     <auth-constraint>
@@ -60,6 +59,6 @@
     <role-name>admin</role-name>
   </security-role>
   <session-config>
-    <session-timeout>60</session-timeout>
+    <session-timeout>720</session-timeout>
   </session-config>
 </web-app>

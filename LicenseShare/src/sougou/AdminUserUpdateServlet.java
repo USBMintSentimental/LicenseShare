@@ -30,7 +30,7 @@ public class AdminUserUpdateServlet extends HttpServlet {
 			user = new UserBean();
 			user.setUserid(userid);
 			user.setUsername(username);
-			user.setPasswd(passwd);
+			user.setPassword(passwd);
 			user.setRole(role);
 			UserDAO dao = new UserDAO();
 			dao.updateUser(user);

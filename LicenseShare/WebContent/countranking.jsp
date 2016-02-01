@@ -33,7 +33,7 @@ OnlyDAO only = new OnlyDAO();
 <p class="br"></p>
 <p class="br"><table border="1"><th>総受験回数ランキング</th></table></p>
 <table border="1">
-<tr><th>順位</th><th>団体名</th><th>ID</th><th>資格名</th><th>受験料(税込)</th><th>受験回数</th></tr>
+<tr><th>順位</th><th>団体名</th><th>資格ID</th><th>資格名</th><th>受験料(税込)</th><th>受験回数</th></tr>
 <jsp:useBean id="LicenseDataBean" class="sougou.LicenseDataBean" scope="session" />
 <%
 ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
@@ -41,8 +41,7 @@ UserDAO user = new UserDAO();
 LicenseDAO license = new LicenseDAO();
 int rank=1;
 for(LicenseBean record : licenseArray){
-	if(record.getLicensecount()==0){
-	}else{
+	if(record.getLicensecount()>0){
 %>
 <tr>
 <td><div align="center"><%=rank%></div></td>
