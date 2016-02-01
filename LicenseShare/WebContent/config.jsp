@@ -13,7 +13,6 @@ function check(){
 	if(window.confirm('更新しますか？')){
 		return true;
 	}else{
-		window.alert('キャンセルされました');
 		return false;
 	}
 }
