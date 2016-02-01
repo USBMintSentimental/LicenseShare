@@ -28,7 +28,7 @@
 <div align="center">
 <br>
 <table border="1">
-<tr><th>団体名</th><th>資格ID</th><th>資格名</th><th>受験料(税込)</th></tr>
+<tr><th>団体名</th><th>ID</th><th>資格名</th><th>受験料(税込)</th></tr>
 <%
 ArrayList<LicenseBean> licenseArray = LicenseDataBean.getLicenseArray();
 UserDAO user = new UserDAO();

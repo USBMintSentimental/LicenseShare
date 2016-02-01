@@ -108,6 +108,7 @@ public class LicenseDAO extends DAOBase {
                 record.setUserid(rs.getString(DatabaseParameters.USER_ID));
                 record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
                 record.setComment(rs.getString(DatabaseParameters.COMMENT));
+                record.setPass(rs.getString(DatabaseParameters.LICENSE_PASS));
                 userlicenseArray.addUserLicense(record);
             }
         }
@@ -153,7 +154,8 @@ public class LicenseDAO extends DAOBase {
 			stmt.setString(2, license.getUserid());
 			stmt.setString(3, license.getComment());
 			stmt.setInt(4, license.getCount());
-			stmt.setString(5, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(license.getDatetime()));
+			stmt.setString(5, license.getPass());
+			stmt.setString(6, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(license.getDatetime()));
 			stmt.executeUpdate();
 		}
 		catch(SQLException e){

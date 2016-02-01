@@ -10,6 +10,7 @@ public class UserLicenseBean implements Serializable {
 	private String comment;
 	private int count;
 	private Date datetime;
+	private String pass;
 	
 	public UserLicenseBean() {
 		
@@ -45,6 +46,14 @@ public class UserLicenseBean implements Serializable {
 	
 	public void setCount(int count) {
 		this.count = count;
+	}
+	
+	public String getPass() {
+		return pass;
+	}
+	
+	public void setPass(String pass) {
+		this.pass = pass;
 	}
 	
 	public Date getDatetime() {

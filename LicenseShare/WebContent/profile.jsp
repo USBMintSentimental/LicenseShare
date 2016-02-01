@@ -45,7 +45,7 @@ String userid = request.getRemoteUser();
 <div align="center">
 <br>
 <table border="1">
-<tr><th>資格ID</th><th>資格名</th><th>受験回数</th><th>削除</th></tr>
+<tr><th>ID</th><th>資格名</th><th>受験回数</th><th>削除</th></tr>
 <%
 ArrayList<UserLicenseBean> userlicenseArray = UserLicenseDataBean.getUserLicenseArray();
 UserDAO user = new UserDAO();
@@ -53,6 +53,7 @@ LicenseDAO license = new LicenseDAO();
 OnlyDAO only = new OnlyDAO();
 for(UserLicenseBean record : userlicenseArray){
 	if(userid.equals(record.getUserid())){
+		if(record.getPass().equals("pass")){
 %>
 <tr>
 <td><div align="center"><%=record.getLicenseid()%></div></td>
@@ -68,6 +69,7 @@ for(UserLicenseBean record : userlicenseArray){
 
 </tr>
 <%
+}
 }
 }
 %>

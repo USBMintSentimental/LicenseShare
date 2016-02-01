@@ -17,7 +17,7 @@ p.br{
 	line-height: 50%;
 }
 div.br{
-　　　　width: 350px;
+　　　　width: 700px;
 　　　　word-wrap: break-word;
 }
 </style>
@@ -41,7 +41,7 @@ OnlyDAO only = new OnlyDAO();
 %>
 
 <section>
-<h2>　</h2>
+<h2><%= only.getLicensename(licenseid) %></h2>
 <div align="center">
 <br>
 <table border="1">
@@ -49,22 +49,20 @@ OnlyDAO only = new OnlyDAO();
 <tr><th>資格ID</th><td><div align="center"><%= licenseid %></div></td></tr>
 <tr><th>資格名</th><td><div align="center"><%= only.getLicensename(licenseid) %></div></td></tr>
 <tr><th>受験料(税込)</th><td><div align="center"><%= only.getLicenseprice(licenseid) %>円</div></td></tr>
+<tr><th>登録日</th><td><div align="center"><%= only.getLicensecreatedate(licenseid) %></div></td></tr>
 </table>
-<p class="br"></p>
+<br>
 <table border="1">
 <tr><th>ユーザーID</th><th>感想</th></tr>
 <%
 for(UserLicenseBean record : userlicenseArray){
 	if(licenseid.equals(record.getLicenseid())){
-		if(record.getComment().equals("")){
-		}else{
 %>
 <tr>
 <td><div align="center"><%= record.getUserid() %></div></td>
-<td><div class="br"><%= record.getComment() %></div></td>
+<td><%= record.getComment() %></td>
 </tr>
 <%
-}
 }
 }
 %>

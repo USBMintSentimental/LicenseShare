@@ -32,18 +32,22 @@ public class UserLicenseInsertServlet extends HttpServlet {
 			String userid = request.getRemoteUser();
 			int count = Integer.parseInt(request.getParameter("count"));
 			String comment = request.getParameter("comment");
+			String pass = request.getParameter("pass");
 			licenseBean = new UserLicenseBean();
 			licenseBean.setLicenseid(licenseid);
 			licenseBean.setUserid(userid);
 			licenseBean.setCount(count);
 			licenseBean.setComment(comment);
 			licenseBean.setDatetime(date);
+			licenseBean.setPass(pass);
 			LicenseDAO dao = new LicenseDAO();
 			OnlyDAO only = new OnlyDAO();
-			dao.insertUserLicense(licenseBean);
 			only.updateLicensecount(licenseid,count);
-			only.updateLicensepass(licenseid);
-			only.updateUserpass(userid);
+			dao.insertUserLicense(licenseBean);
+			if(pass.equals("pass")){
+				only.updateLicensepass(licenseid);
+				only.updateUserpass(userid);
+			}
 			getServletContext().getRequestDispatcher("/addlicense.jsp").forward(request,response);
 		}
 		catch(SystemException e){

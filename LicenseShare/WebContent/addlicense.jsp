@@ -55,6 +55,7 @@ for(LicenseBean record : licenseArray){
 %>
 </select>　<input type="number" name="count" min="1" max="100000" placeholder="受験回数" required></p>
 <p class="br"><textarea rows="5" cols="50" name="comment" placeholder="感想"></textarea></p>
+<p class="br"><input type="radio" name="pass" value="pass" checked>合格　<input type="radio" name="pass" value="failure">不合格</p>
 <p class="br"><input type="submit" value="登録">　<input type="reset"></p>
 </form>
 <br>
