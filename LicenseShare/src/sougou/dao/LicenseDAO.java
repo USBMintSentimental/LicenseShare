@@ -109,6 +109,7 @@ public class LicenseDAO extends DAOBase {
                 record.setLicenseid(rs.getString(DatabaseParameters.LICENSE_ID));
                 record.setLicensecomment(rs.getString(DatabaseParameters.LICENSE_COMMENT));
                 record.setLicensepass(rs.getString(DatabaseParameters.LICENSE_PASS));
+                record.setDatetime(rs.getDate(DatabaseParameters.SYUTOKU_DATE));
                 userlicenseArray.addUserLicense(record);
             }
         }

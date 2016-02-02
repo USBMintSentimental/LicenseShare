@@ -43,9 +43,10 @@ String userid = request.getRemoteUser();
 <form action="UserUpdateServlet" method="post" onSubmit="return check()">
 <p class="br"><input type="text" name="userid" value="<%= userid %>" readonly required></p>
 <p class="br"><input type="text" name="username" value="<%= only.getUsername(userid) %>" placeholder="名前" required><br></p>
-<p class="br"><input type="password" name="oldpasswd" value="" placeholder="パスワード　10文字以下" maxlength="10" required><br></p>
-<p class="br"><input type="password" name="newpasswd1" value="" placeholder="新パスワード1　10文字以下" maxlength="10" required><br></p>
-<p class="br"><input type="password" name="newpasswd2" value="" placeholder="新パスワード2　10文字以下" maxlength="10" required><br></p>
+<p class="br"><input type="password" name="oldpasswd" value="" placeholder="パスワード 入力必須" maxlength="10" required><br></p>
+<p class="br"><input type="password" name="newpasswd1" value="" placeholder="新パスワード1" maxlength="10"><br></p>
+<p class="br"><input type="password" name="newpasswd2" value="" placeholder="新パスワード2" maxlength="10"><br></p>
+<input type="hidden" name="role" value="<%= only.getRole(userid) %>">
 <p class="br"><input type="submit" value="更新">　<input type="reset"></p>
 </form>
 </div>

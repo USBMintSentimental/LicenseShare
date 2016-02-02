@@ -44,7 +44,7 @@ String userid = request.getRemoteUser();
 <div align="center">
 <br>
 <table border="1">
-<tr><th>資格ID</th><th>資格名</th><th>受験回数</th><th>削除</th></tr>
+<tr><th>資格ID</th><th>資格名</th><th>受験回数</th><th>登録日</th><th>合否</th><th>削除</th></tr>
 <%
 ArrayList<UserLicenseBean> userlicenseArray = UserLicenseDataBean.getUserLicenseArray();
 UserDAO user = new UserDAO();
@@ -57,6 +57,8 @@ for(UserLicenseBean record : userlicenseArray){
 <td><div align="center"><%=record.getLicenseid()%></div></td>
 <td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=only.getLicensename(record.getLicenseid())%></a></div></td>
 <td><div align="center"><%=only.getLicenseusercount(record.getLicenseid(),request.getRemoteUser())%></div></td>
+<td><div align="center"><%=record.getDatetime()%></div></td>
+<td><div align="center"><%=record.getLicensepass()%></div></td>
 
 <td><div align="center">
 <form action="UserLicenseDeleteServlet" method="post" onSubmit="return check()">

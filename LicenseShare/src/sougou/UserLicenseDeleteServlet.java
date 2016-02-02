@@ -35,7 +35,7 @@ public class UserLicenseDeleteServlet extends HttpServlet {
 			LicenseDAO dao = new LicenseDAO();
 			OnlyDAO only = new OnlyDAO();
 			dao.deleteUserLicense(licenseBean);
-			if(licensepass.equals("‡Ši")){
+			if(licensepass.equals("åˆæ ¼")){
 				only.deleteUserpass(userid);
 			}
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);

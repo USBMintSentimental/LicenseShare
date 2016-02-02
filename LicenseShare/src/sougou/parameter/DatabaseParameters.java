@@ -14,6 +14,7 @@ public class DatabaseParameters {
 	public static final String LICENSE_COUNT = "LICENSE_COUNT";
 	public static final String LICENSE_PASS = "LICENSE_PASS";
 	public static final String CREATE_DATE = "CREATE_DATE";
+	public static final String SYUTOKU_DATE = "SYUTOKU_DATE";
 	
 	public static final String COUNTER = "COUNTER";
 	

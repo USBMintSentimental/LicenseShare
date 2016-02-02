@@ -31,6 +31,9 @@ public class UserLicenseInsertServlet extends HttpServlet {
 			String licenseid = request.getParameter("licenseid");
 			String userid = request.getRemoteUser();
 			int licensecount = Integer.parseInt(request.getParameter("licensecount"));
+			if(licensecount>100){
+				licensecount=100;
+			}
 			String licensecomment = request.getParameter("licensecomment");
 			String licensepass = request.getParameter("licensepass");
 			licenseBean = new UserLicenseBean();
@@ -44,7 +47,7 @@ public class UserLicenseInsertServlet extends HttpServlet {
 			OnlyDAO only = new OnlyDAO();
 			dao.insertUserLicense(licenseBean);
 			only.updateLicensecount(licenseid,licensecount);
-			if(licensepass.equals("‡Ši")){
+			if(licensepass.equals("åˆæ ¼")){
 				only.updateLicensepass(licenseid);
 				only.updateUserpass(userid);
 			}

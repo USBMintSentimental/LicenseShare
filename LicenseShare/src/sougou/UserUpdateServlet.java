@@ -29,18 +29,29 @@ public class UserUpdateServlet extends HttpServlet {
 			String oldpasswd = request.getParameter("oldpasswd");
 			String newpasswd1 = request.getParameter("newpasswd1");
 			String newpasswd2 = request.getParameter("newpasswd2");
+			String role = request.getParameter("role");
 			String userid = request.getRemoteUser();
 			if(only.getPassword(userid).equals(oldpasswd)){
-				if(newpasswd1.equals(newpasswd2)){
+				if((newpasswd1.equals(""))&&(newpasswd2.equals(""))){
+					user = new UserBean();
+					user.setUsername(username);
+					user.setPassword(oldpasswd);
+					user.setUserid(userid);
+					user.setRole(role);
+					UserDAO dao = new UserDAO();
+					dao.updateUser(user);
+					getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
+				}else if(newpasswd1.equals(newpasswd2)){
 					user = new UserBean();
 					user.setUsername(username);
 					user.setPassword(newpasswd2);
 					user.setUserid(userid);
+					user.setRole(role);
 					UserDAO dao = new UserDAO();
 					dao.updateUser(user);
 					getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 				}else{
-					String e = "“ü—Í‚µƒpƒXƒ[ƒh‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ";
+					String e = "å…¥åŠ›ã•ã‚ŒãŸå€¤ãŒç•°ãªã‚Šã¾ã™";
 					HttpSession session = request.getSession();
 					session.setAttribute("Except", e);
 					getServletContext().getRequestDispatcher("/othererror.jsp").forward(request,response);

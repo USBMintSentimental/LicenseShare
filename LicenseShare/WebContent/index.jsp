@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="sougou.dao.*"%>
+<%@ page import="sougou.parameter.StringParameters"%>
 <%@ page import="java.io.FileReader"%>
 <%@ page import="java.io.BufferedReader"%>
 <%@ page import="java.io.IOException"%>
@@ -31,7 +32,8 @@ OnlyDAO only = new OnlyDAO();
 <p style="position: relative;">
    <img src="images/index.png"><br>
    <span style="position: absolute; line-height: 125%; top: 30px; left: 35px; width: 360px;">
-   a
+   <% int i=(int)(Math.random()*StringParameters.length); %>
+   <%= StringParameters.str[i] %>
    </span>
 </p>
 </div>
