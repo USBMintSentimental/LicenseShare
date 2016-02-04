@@ -1,12 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="java.util.ArrayList"%>
-<%@ page import="java.text.SimpleDateFormat"%>
-<%@ page import="java.util.Date"%>
 <%@ page import="sougou.*"%>
 <%@ page import="sougou.link.*"%>
 <%@ page import="sougou.dao.*"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.io.FileReader"%>
+<%@ page import="java.io.BufferedReader"%>
+<%@ page import="java.io.IOException"%>
 <%@ page import="java.text.DecimalFormat"%>
-<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
@@ -15,7 +15,7 @@
 <script type="text/javascript"> 
 <!-- 
 function check(){
-	if(window.confirm('削除しますか？')){
+	if(window.confirm('解除しますか？')){
 		return true;
 	}else{
 		return false;
@@ -23,48 +23,47 @@ function check(){
 }
 -->
 </script>
+<style type="text/css">
+p.br { line-height: 50%; }
+div.br {
+  width: 330px;
+  word-wrap: break-word;
+}
+</style>
 </head>
 <body id="top">
 
 <div id="container">
 
 <br>
-
+<%
+OnlyDAO only = new OnlyDAO();
+UserDAO user = new UserDAO();
+%>
 <div id="contents">
 
 <div id="main">
 
-<%
-String userid = request.getRemoteUser();
-%>
-
 <section>
-<jsp:useBean id="UserLicenseDataBean" class="sougou.UserLicenseDataBean" scope="session" />
 <h2>　</h2>
+<jsp:useBean id="FriendDataBean" class="sougou.FriendDataBean" scope="session" />
 <div align="center">
 <br>
 <table border="1">
-<tr><th>資格ID</th><th>資格名</th><th>受験回数</th><th>受験日</th><th>合否</th><th>削除</th></tr>
+<tr><th>ユーザーID</th><th>フレンドID</th><th>解除</th></tr>
 <%
-ArrayList<UserLicenseBean> userlicenseArray = UserLicenseDataBean.getUserLicenseArray();
-UserDAO user = new UserDAO();
-LicenseDAO license = new LicenseDAO();
-OnlyDAO only = new OnlyDAO();
-for(UserLicenseBean record : userlicenseArray){
-	if(userid.equals(record.getUserid())){
+ArrayList<FriendBean> friendArray = FriendDataBean.getFriendArray();
+for(FriendBean record : friendArray){
+	if(request.getRemoteUser().equals(record.getUserid())){
 %>
 <tr>
-<td><div align="center"><%=record.getLicenseid()%></div></td>
-<td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=only.getLicensename(record.getLicenseid())%></a></div></td>
-<td><div align="center"><%=only.getLicenseusercount(record.getLicenseid(),request.getRemoteUser())%></div></td>
-<td><div align="center"><%=record.getDatetime()%></div></td>
-<td><div align="center"><%=record.getLicensepass()%></div></td>
+<td><div align="center"><%=record.getUserid()%></div></td>
+<td><div align="center"><%=record.getFriendid()%></div></td>
 
 <td><div align="center">
-<form action="UserLicenseDeleteServlet" method="post" onSubmit="return check()">
-<input type="hidden" name="licenseid" value="<%=record.getLicenseid()%>">
+<form action="FriendDeleteServlet" method="post" onSubmit="return check()">
 <input type="hidden" name="userid" value="<%=request.getRemoteUser()%>">
-<input type="hidden" name="licensepass" value="<%=record.getLicensepass()%>">
+<input type="hidden" name="friendid" value="<%=record.getFriendid()%>">
 <input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
 </div></td>
 
@@ -102,6 +101,10 @@ only.setAccesscounter();
 <ul class="submenu mb10">
 <li><a href="CountRankingServlet">総受験回数ランキング</a></li>
 <li><a href="PassRankingServlet">総所持資格ランキング</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="FriendServlet">友達</a></li>
 </ul>
 
 <%

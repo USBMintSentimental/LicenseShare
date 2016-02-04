@@ -16,6 +16,8 @@ public class DatabaseParameters {
 	public static final String CREATE_DATE = "CREATE_DATE";
 	public static final String SYUTOKU_DATE = "SYUTOKU_DATE";
 	
+	public static final String FRIEND_ID = "FRIEND_ID";
+	
 	public static final String COUNTER = "COUNTER";
 	
 	public static final String SQL_SELECT_COUNTER = "SELECT COUNTER FROM Counter";
@@ -59,4 +61,9 @@ public class DatabaseParameters {
 	
 	public static final String SQL_SELECT_LICENSE_COUNT = "SELECT LICENSE_COUNT FROM License WHERE LICENSE_ID=?";
 	public static final String SQL_SELECT_LICENSE_PASS = "SELECT LICENSE_PASS FROM License WHERE LICENSE_ID=?";
+	
+	public static final String SQL_SELECT_FRIEND = "SELECT * FROM FRIEND";
+	
+	public static final String SQL_INSERT_FRIEND = "INSERT INTO Friend VALUES(?,?)";
+	public static final String SQL_DELETE_FRIEND = "DELETE FROM Friend WHERE USER_ID=? AND FRIEND_ID=?";
 }

@@ -3,7 +3,6 @@
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.Date"%>
 <%@ page import="sougou.*"%>
-<%@ page import="sougou.link.*"%>
 <%@ page import="sougou.dao.*"%>
 <%@ page import="java.text.DecimalFormat"%>
 <html>
@@ -15,7 +14,7 @@
 <script type="text/javascript"> 
 <!-- 
 function check(){
-	if(window.confirm('削除しますか？')){
+	if(window.confirm('登録しますか？')){
 		return true;
 	}else{
 		return false;
@@ -23,6 +22,11 @@ function check(){
 }
 -->
 </script>
+<style type="text/css">
+p.br {
+	line-height: 0.5;
+}
+</style>
 </head>
 <body id="top">
 
@@ -34,47 +38,19 @@ function check(){
 
 <div id="main">
 
-<%
-String userid = request.getRemoteUser();
-%>
-
 <section>
-<jsp:useBean id="UserLicenseDataBean" class="sougou.UserLicenseDataBean" scope="session" />
 <h2>　</h2>
 <div align="center">
 <br>
-<table border="1">
-<tr><th>資格ID</th><th>資格名</th><th>受験回数</th><th>受験日</th><th>合否</th><th>削除</th></tr>
 <%
-ArrayList<UserLicenseBean> userlicenseArray = UserLicenseDataBean.getUserLicenseArray();
 UserDAO user = new UserDAO();
-LicenseDAO license = new LicenseDAO();
-OnlyDAO only = new OnlyDAO();
-for(UserLicenseBean record : userlicenseArray){
-	if(userid.equals(record.getUserid())){
 %>
-<tr>
-<td><div align="center"><%=record.getLicenseid()%></div></td>
-<td><div align="center"><a href="License?id=<%=record.getLicenseid()%>"><%=only.getLicensename(record.getLicenseid())%></a></div></td>
-<td><div align="center"><%=only.getLicenseusercount(record.getLicenseid(),request.getRemoteUser())%></div></td>
-<td><div align="center"><%=record.getDatetime()%></div></td>
-<td><div align="center"><%=record.getLicensepass()%></div></td>
-
-<td><div align="center">
-<form action="UserLicenseDeleteServlet" method="post" onSubmit="return check()">
-<input type="hidden" name="licenseid" value="<%=record.getLicenseid()%>">
-<input type="hidden" name="userid" value="<%=request.getRemoteUser()%>">
-<input type="hidden" name="licensepass" value="<%=record.getLicensepass()%>">
-<input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
-</div></td>
-
-</tr>
-<%
-	}
-}
-%>
-</table>
-<br>
+<form action="FriendInsertServlet" method="post" onSubmit="return check()">
+<input type="hidden" name="userid" value="<%= request.getRemoteUser() %>">
+<p class="br"><input type="text" name="friendid" pattern="^[0-9A-Za-z]+$" placeholder="フレンドID" required></p>
+<p class="br"><input type="submit" value="登録">　<input type="reset"></p>
+<p class="br"></p>
+</form>
 </div>
 </div>
 <!--/main-->
@@ -93,6 +69,7 @@ for(UserLicenseBean record : userlicenseArray){
 
 <%
 DecimalFormat df = new DecimalFormat("000000");
+OnlyDAO only = new OnlyDAO();
 only.setAccesscounter();
 %>
 <ul class="submenu mb10">

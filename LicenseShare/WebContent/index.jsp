@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="sougou.dao.*"%>
+<%@ page import="sougou.link.*"%>
 <%@ page import="sougou.parameter.StringParameters"%>
 <%@ page import="java.io.FileReader"%>
 <%@ page import="java.io.BufferedReader"%>
 <%@ page import="java.io.IOException"%>
 <%@ page import="java.text.DecimalFormat"%>
+<% int i=(int)(Math.random()*StringParameters.length); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
@@ -12,6 +14,10 @@
 <link rel="shortcut icon" href="images/favicon.ico"/>
 <style type="text/css">
 p.br { line-height: 50%; }
+div.br {
+  width: 330px;
+  word-wrap: break-word;
+}
 </style>
 </head>
 <body id="top">
@@ -31,8 +37,7 @@ OnlyDAO only = new OnlyDAO();
 <br>
 <p style="position: relative;">
    <img src="images/index.png"><br>
-   <span style="position: absolute; line-height: 125%; top: 30px; left: 35px; width: 360px;">
-   <% int i=(int)(Math.random()*StringParameters.length); %>
+   <span style="position: absolute; line-height: 150%; top: 30px; left: 35px; width: 340x; word-wrap: break-word;">
    <%= StringParameters.str[i] %>
    </span>
 </p>
@@ -46,7 +51,7 @@ OnlyDAO only = new OnlyDAO();
 <li><a href="index.jsp">ホーム</a></li>
 <li><a href="LicenseListServlet">資格一覧</a></li>
 <li><a href="AddLicenseServlet">資格追加</a></li>
-<li><a href="ProfileServlet">プロフィール</a></li>
+<li><a href="ProfileServlet">受験履歴</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
 </ul>
@@ -57,6 +62,11 @@ only.setAccesscounter();
 %>
 <ul class="submenu mb10">
 <li><a href="#"><%= df.format(only.getAccesscounter()) %></a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="FriendServlet">友達一覧</a></li>
+<li><a href="AddFriendServlet">友達追加</a></li>
 </ul>
 
 <ul class="submenu mb10">

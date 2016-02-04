@@ -4,11 +4,15 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
 import sougou.exception.DatabaseException;
 import sougou.exception.SystemException;
 import sougou.parameter.ExceptionParameters;
 import sougou.parameter.DatabaseParameters;
+import sougou.FriendBean;
+import sougou.FriendDataBean;
+import sougou.LicenseBean;
 import sougou.UserDataBean;
 import sougou.UserBean;
 
@@ -37,6 +41,30 @@ public class UserDAO extends DAOBase {
             this.close(stmt);
         }
         return userArray;
+    }
+	
+	public FriendDataBean getFriendData() throws DatabaseException, SystemException {
+        Statement stmt = null;
+        FriendDataBean friendArray = new FriendDataBean();
+        this.open();
+        try {
+            stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery(DatabaseParameters.SQL_SELECT_FRIEND);
+            while (rs.next()) {
+                FriendBean record = new FriendBean();
+                record.setUserid(rs.getString(DatabaseParameters.USER_ID));
+                record.setFriendid(rs.getString(DatabaseParameters.FRIEND_ID));
+                friendArray.addFriend(record);
+            }
+        }
+        catch(SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return friendArray;
     }
 	
 	public UserBean getUser(String userid) throws DatabaseException,SystemException {
@@ -103,6 +131,42 @@ public class UserDAO extends DAOBase {
 			}
 			finally{
 				this.close(stmt);
+		}
+	}
+		
+	public void insertFriend(FriendBean friend) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_INSERT_FRIEND);
+			stmt.setString(1, friend.getUserid());
+			stmt.setString(2, friend.getFriendid());
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
+	
+	public void deleteFriend(FriendBean friend) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_DELETE_FRIEND);
+			stmt.setString(1, friend.getUserid());
+			stmt.setString(2, friend.getFriendid());
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+		}
+		finally{
+			this.close(stmt);
 		}
 	}
 }
