@@ -6,7 +6,7 @@
 body {
 	color: #333;	/*全体の文字色*/
 	background-color: #eee;	/*全体の背景色*/
-	background-image: url(../images/aui.jpg);	/*背景壁紙*/
+	background-image: url(../images/background.jpg);	/*背景壁紙*/
 	margin: 0px;
 	padding: 0px;
 	font: 14px/2 "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro";	/*文字サイズ/行間、フォントファミリー*/

@@ -51,10 +51,10 @@ public class UserUpdateServlet extends HttpServlet {
 					dao.updateUser(user);
 					getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 				}else{
-					String e = "入力された値が異なります";
+					String error = "入力されたパスワードが違います";
 					HttpSession session = request.getSession();
-					session.setAttribute("Except", e);
-					getServletContext().getRequestDispatcher("/othererror.jsp").forward(request,response);
+					session.setAttribute("Error", error);
+					getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
 				}
 			}
 		}
@@ -62,13 +62,13 @@ public class UserUpdateServlet extends HttpServlet {
 			e.printStackTrace();
 			HttpSession session = request.getSession();
 			session.setAttribute("Except", e);
-			getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
+			getServletContext().getRequestDispatcher("/parametererror.jsp").forward(request,response);
 		}
 		catch(DatabaseException e){
 			e.printStackTrace();
 			HttpSession session = request.getSession();
 			session.setAttribute("Except", e);
-			getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
+			getServletContext().getRequestDispatcher("/parametererror.jsp").forward(request,response);
 		}
 	}
 }

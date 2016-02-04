@@ -1,9 +1,11 @@
 package sougou.parameter;
 
 public class ExceptionParameters{
-	public static final String SYSTEM_EXCEPTION_MESSAGE="�V�X�e���G���[���������܂���";
-	public static final String DATABASE_CONNECTION_EXCEPTION_MESSAGE="�f�[�^�x�[�X�ւ̐ڑ����ɃG���[���������܂���";
-	public static final String DATABASE_CLOSE_EXCEPTION_MESSAGE="�f�[�^�[�x�[�X����̐ؒf���ɃG���[���������܂���";
-	public static final String Parameter_FORMAT_EXCEPTION_MESSAGE="���͂����f�[�^�̌`��������������܂���";
-	public static final String PASSWORD_EXCEPTION_MESSAGE="���͂����p�X���[�h������������܂���";
+	public static final String SYSTEM_EXCEPTION_MESSAGE="システムエラーが発生しました";
+	public static final String DATABASE_CONNECTION_EXCEPTION_MESSAGE="データベースへの接続時にエラーが発生しました";
+	public static final String DATABASE_CLOSE_EXCEPTION_MESSAGE="データーベースからの切断時にエラーが発生しました";
+	public static final String Parameter_FORMAT_EXCEPTION_MESSAGE="入力したデータの形式が正しくありません";
+	public static final String PASSWORD_EXCEPTION_MESSAGE="入力したパスワードが正しくありません";
+	public static final String FRIEND_ID_EXCEPTION_MESSAGE1="入力されたフレンドIDが存在しません";
+	public static final String FRIEND_ID_EXCEPTION_MESSAGE2="入力されたフレンドIDが既に存在しています";
 }

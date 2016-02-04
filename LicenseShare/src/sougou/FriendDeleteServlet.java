@@ -38,13 +38,13 @@ public class FriendDeleteServlet extends HttpServlet {
 			e.printStackTrace();
 			HttpSession session = request.getSession();
 			session.setAttribute("Except", e);
-			getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
+			getServletContext().getRequestDispatcher("/parametererror.jsp").forward(request,response);
 		}
 		catch(DatabaseException e){
 			e.printStackTrace();
 			HttpSession session = request.getSession();
 			session.setAttribute("Except", e);
-			getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
+			getServletContext().getRequestDispatcher("/parametererror.jsp").forward(request,response);
 		}
 	}
 }

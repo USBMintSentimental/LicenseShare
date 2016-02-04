@@ -23,9 +23,9 @@
 <div align="center">
 <br>
 <%
-Exception e=(Exception)session.getAttribute("Except");
+String error=(String)session.getAttribute("Error");
 %>
-<p><%= e.getMessage() %>
+<p><font size="4"><%= error %></font>
 </div>
 </div>
 <!--/main-->

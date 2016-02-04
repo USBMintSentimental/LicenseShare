@@ -141,11 +141,12 @@ public class UserDAO extends DAOBase {
 			stmt = con.prepareStatement(DatabaseParameters.SQL_INSERT_FRIEND);
 			stmt.setString(1, friend.getUserid());
 			stmt.setString(2, friend.getFriendid());
+			stmt.setString(3, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(friend.getCreatedate()));
 			stmt.executeUpdate();
 		}
 		catch(SQLException e){
 			throw new DatabaseException(
-					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+					ExceptionParameters.FRIEND_ID_EXCEPTION_MESSAGE2, e);
 		}
 		finally{
 			this.close(stmt);

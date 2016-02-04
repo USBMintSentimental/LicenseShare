@@ -1,8 +1,11 @@
 package sougou.dao;
 
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import javax.servlet.http.HttpSession;
 
 import sougou.exception.DatabaseException;
 import sougou.exception.SystemException;
@@ -10,6 +13,27 @@ import sougou.parameter.ExceptionParameters;
 import sougou.parameter.DatabaseParameters;
 
 public class OnlyDAO extends DAOBase {
+	public String getUserid(String userid) throws DatabaseException,SystemException {
+        String str=null;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_USER_ID);
+            stmt.setString(1, userid);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            str=(rs.getString(DatabaseParameters.USER_ID));
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.FRIEND_ID_EXCEPTION_MESSAGE1, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return str;
+    }
+	
 	public String getUsername(String userid) throws DatabaseException,SystemException {
         String str=null;
         PreparedStatement stmt = null;
@@ -325,4 +349,51 @@ public class OnlyDAO extends DAOBase {
 			this.close(stmt);
 		}
 	}
+	
+	public String getFriendstate(String userid,String friendid) throws DatabaseException,SystemException {
+        String str=null;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_FRIEND_STATE);
+            stmt.setString(1, userid);
+            stmt.setString(2, friendid);
+            ResultSet rs = stmt.executeQuery();
+            rs.next();
+            str=(rs.getString(DatabaseParameters.USER_ID));
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return str;
+    }
+	
+	public String getUserstate(String userid,String friendid) throws DatabaseException,SystemException {
+        String str=null;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_USER_STATE);
+            stmt.setString(1, friendid);
+            stmt.setString(2, userid);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+            	str=rs.getString(DatabaseParameters.FRIEND_ID);
+            }else{
+            	str="NULL";
+            }
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return str;
+    }
 }

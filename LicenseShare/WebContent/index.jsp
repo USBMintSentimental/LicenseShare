@@ -5,7 +5,6 @@
 <%@ page import="java.io.FileReader"%>
 <%@ page import="java.io.BufferedReader"%>
 <%@ page import="java.io.IOException"%>
-<%@ page import="java.text.DecimalFormat"%>
 <% int i=(int)(Math.random()*StringParameters.length); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -57,16 +56,15 @@ OnlyDAO only = new OnlyDAO();
 </ul>
 
 <%
-DecimalFormat df = new DecimalFormat("000000");
 only.setAccesscounter();
 %>
 <ul class="submenu mb10">
-<li><a href="#"><%= df.format(only.getAccesscounter()) %></a></li>
+<li><a href="#">累計:<%= only.getAccesscounter() %>人目</a></li>
 </ul>
 
 <ul class="submenu mb10">
 <li><a href="FriendServlet">友達一覧</a></li>
-<li><a href="AddFriendServlet">友達追加</a></li>
+<li><a href="addfriend.jsp">友達追加</a></li>
 </ul>
 
 <ul class="submenu mb10">

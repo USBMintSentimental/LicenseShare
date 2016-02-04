@@ -1,11 +1,13 @@
 package sougou;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class FriendBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userid;
 	private String friendid;
+	private Date createdate;
 	
 	public FriendBean() {
 		
@@ -25,5 +27,13 @@ public class FriendBean implements Serializable {
 	
 	public void setFriendid(String friendid) {
 		this.friendid = friendid;
+	}
+	
+	public Date getCreatedate() {
+		return createdate;
+	}
+	
+	public void setCreatedate(Date createdate) {
+		this.createdate = createdate;
 	}
 }

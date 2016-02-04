@@ -49,6 +49,7 @@ public class DatabaseParameters {
 	public static final String SQL_UPDATE_USER_LICENSE = "UPDATE Syutoku SET LICENSE_ID=? WHERE USER_ID=?";
 	public static final String SQL_DELETE_USER_LICENSE = "DELETE FROM Syutoku WHERE LICENSE_ID=? AND USER_ID=?";
 	
+	public static final String SQL_SELECT_USER_ID = "SELECT USER_ID FROM User WHERE USER_ID=?";
 	public static final String SQL_SELECT_USER_NAME = "SELECT USER_NAME FROM User WHERE USER_ID=?";
 	public static final String SQL_SELECT_PASSWORD = "SELECT PASSWORD FROM User WHERE USER_ID=?";
 	public static final String SQL_SELECT_ROLE = "SELECT ROLE FROM Role WHERE USER_ID=?";
@@ -64,6 +65,9 @@ public class DatabaseParameters {
 	
 	public static final String SQL_SELECT_FRIEND = "SELECT * FROM FRIEND";
 	
-	public static final String SQL_INSERT_FRIEND = "INSERT INTO Friend VALUES(?,?)";
+	public static final String SQL_INSERT_FRIEND = "INSERT INTO Friend VALUES(?,?,?)";
 	public static final String SQL_DELETE_FRIEND = "DELETE FROM Friend WHERE USER_ID=? AND FRIEND_ID=?";
+	
+	public static final String SQL_SELECT_FRIEND_STATE = "SELECT USER_ID FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
+	public static final String SQL_SELECT_USER_STATE = "SELECT USER_ID FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
 }

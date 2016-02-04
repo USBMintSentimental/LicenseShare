@@ -1,8 +1,8 @@
 package sougou.parameter;
 
 public class ExceptionParameters{
-	public static final String SYSTEM_EXCEPTION_MESSAGE="ƒVƒXƒeƒ€ƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½";
-	public static final String DATABASE_CONNECTION_EXCEPTION_MESSAGE="ƒf[ƒ^ƒx[ƒX‚Ö‚ÌÚ‘±Žž‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½";
-	public static final String DATABASE_CLOSE_EXCEPTION_MESSAGE="ƒf[ƒ^[ƒx[ƒX‚©‚ç‚ÌØ’fŽž‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½";
-	public static final String Parameter_FORMAT_EXCEPTION_MESSAGE="“ü—Í‚µ‚½ƒf[ƒ^‚ÌŒ`Ž®‚ª³‚µ‚­‚ ‚è‚Ü‚¹‚ñ";
+	public static final String SYSTEM_EXCEPTION_MESSAGE="ã‚·ã‚¹ãƒ†ãƒ ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ";
+	public static final String DATABASE_CONNECTION_EXCEPTION_MESSAGE="ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ã¸ã®æŽ¥ç¶šæ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ";
+	public static final String DATABASE_CLOSE_EXCEPTION_MESSAGE="ãƒ‡ãƒ¼ã‚¿ãƒ¼ãƒ™ãƒ¼ã‚¹ã‹ã‚‰ã®åˆ‡æ–­æ™‚ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ";
+	public static final String Parameter_FORMAT_EXCEPTION_MESSAGE="å…¥åŠ›ã—ãŸãƒ‡ãƒ¼ã‚¿ã®å½¢å¼ãŒæ­£ã—ãã‚ã‚Šã¾ã›ã‚“";
 }
