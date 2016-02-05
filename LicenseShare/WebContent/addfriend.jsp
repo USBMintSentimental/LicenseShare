@@ -14,7 +14,7 @@
 <script type="text/javascript"> 
 <!-- 
 function check(){
-	if(window.confirm('登録しますか？')){
+	if(window.confirm('申請しますか？')){
 		return true;
 	}else{
 		return false;
@@ -48,7 +48,7 @@ UserDAO user = new UserDAO();
 <form action="FriendInsertServlet" method="post" onSubmit="return check()">
 <input type="hidden" name="userid" value="<%= request.getRemoteUser() %>">
 <p class="br"><input type="text" name="friendid" pattern="^[0-9A-Za-z]+$" placeholder="フレンドID" required></p>
-<p class="br"><input type="submit" value="登録">　<input type="reset"></p>
+<p class="br"><input type="submit" value="申請">　<input type="reset"></p>
 <p class="br"></p>
 </form>
 </div>

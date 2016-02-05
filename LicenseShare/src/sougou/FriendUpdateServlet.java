@@ -1,7 +1,6 @@
 package sougou;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,11 +14,11 @@ import sougou.dao.UserDAO;
 import sougou.exception.DatabaseException;
 import sougou.exception.SystemException;
 
-@WebServlet("/FriendInsertServlet")
-public class FriendInsertServlet extends HttpServlet {
+@WebServlet("/FriendUpdateServlet")
+public class FriendUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	public FriendInsertServlet() {
+	public FriendUpdateServlet() {
 		super();
 	}
 	
@@ -29,17 +28,15 @@ public class FriendInsertServlet extends HttpServlet {
 		try{
 			String userid = request.getParameter("userid");
 			String friendid = request.getParameter("friendid");
-			String check = "null";
+			String check = request.getParameter("check");
 			UserDAO dao = new UserDAO();
 			OnlyDAO only = new OnlyDAO();
-			Date date = new Date();
 			friendBean = new FriendBean();
 			friendBean.setUserid(userid);
 			friendBean.setFriendid(friendid);
 			friendBean.setCheck(check);
-			friendBean.setCreatedate(date);
 			if(only.getUserid(friendid).equals(friendid)){
-				dao.insertFriend(friendBean);
+				dao.updateFriend(friendBean);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 			}
 		}

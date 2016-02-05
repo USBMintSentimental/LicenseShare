@@ -39,7 +39,7 @@ p.br { line-height: 50%; }
 OnlyDAO only=new OnlyDAO();
 %>
 <form action="LicenseUpdateServlet" method="post" onSubmit="return check()">
-<p class="br"><input type="text" name="licenseid" value="<%= (String)session.getAttribute("licenseid") %>" placeholder="ID" pattern="^[0-9A-Za-z]+$" required></p>
+<p class="br"><input type="text" name="licenseid" value="<%= (String)session.getAttribute("licenseid") %>" placeholder="ID" pattern="^[0-9A-Za-z]+$" readonly required></p>
 <p class="br"><input type="text" name="licensename" value="<%= only.getLicensename((String)session.getAttribute("licenseid")) %>" placeholder="資格名" required><br></p>
 <p class="br"><input type="text" name="licensegroup" value="<%= only.getLicensegroup((String)session.getAttribute("licenseid")) %>" placeholder="団体名" required><br></p>
 <p class="br"><input type="text" name="licenseprice" value="<%= only.getLicenseprice((String)session.getAttribute("licenseid")) %>" placeholder="受験料" pattern="^[0-9]+$" required><br></p>

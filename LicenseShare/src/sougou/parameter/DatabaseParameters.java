@@ -17,6 +17,7 @@ public class DatabaseParameters {
 	public static final String SYUTOKU_DATE = "SYUTOKU_DATE";
 	
 	public static final String FRIEND_ID = "FRIEND_ID";
+	public static final String FRIEND_CHECK = "FRIEND_CHECK";
 	
 	public static final String COUNTER = "COUNTER";
 	
@@ -65,9 +66,9 @@ public class DatabaseParameters {
 	
 	public static final String SQL_SELECT_FRIEND = "SELECT * FROM FRIEND";
 	
-	public static final String SQL_INSERT_FRIEND = "INSERT INTO Friend VALUES(?,?,?)";
+	public static final String SQL_INSERT_FRIEND = "INSERT INTO Friend VALUES(?,?,?,?)";
+	public static final String SQL_UPDATE_FRIEND = "UPDATE Friend SET FRIEND_CHECK=? WHERE USER_ID=? AND FRIEND_ID=?";
 	public static final String SQL_DELETE_FRIEND = "DELETE FROM Friend WHERE USER_ID=? AND FRIEND_ID=?";
 	
-	public static final String SQL_SELECT_FRIEND_STATE = "SELECT USER_ID FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
-	public static final String SQL_SELECT_USER_STATE = "SELECT USER_ID FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
+	public static final String SQL_SELECT_FRIEND_STATE = "SELECT * FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
 }

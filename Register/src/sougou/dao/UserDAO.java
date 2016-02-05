@@ -18,6 +18,7 @@ public class UserDAO extends DAOBase {
 			stmt.setString(1, user.getUserid());
 			stmt.setString(2, user.getUsername());
 			stmt.setString(3, user.getPasswd());
+			stmt.setInt(4, 0);
 			stmt.executeUpdate();
 			stmt = con.prepareStatement(DatabaseParameters.SQL_INSERT_ROLE);
 			stmt.setString(1, user.getUserid());

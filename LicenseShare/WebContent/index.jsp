@@ -59,12 +59,13 @@ OnlyDAO only = new OnlyDAO();
 only.setAccesscounter();
 %>
 <ul class="submenu mb10">
-<li><a href="#">累計:<%= only.getAccesscounter() %>人目</a></li>
+<li><a href="#">累計:<%= session.getMaxInactiveInterval() %>人目</a></li>
 </ul>
 
 <ul class="submenu mb10">
 <li><a href="FriendServlet">友達一覧</a></li>
-<li><a href="addfriend.jsp">友達追加</a></li>
+<li><a href="addfriend.jsp">友達申請</a></li>
+<li><a href="FriendMutualServlet">友達認証</a></li>
 </ul>
 
 <ul class="submenu mb10">
@@ -73,6 +74,7 @@ only.setAccesscounter();
 </ul>
 
 <%
+session.setMaxInactiveInterval(-1);
 if(request.isUserInRole("admin")==true){
 %>
 <ul class="submenu mb10">

@@ -1,11 +1,8 @@
 package sougou.dao;
 
-import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import javax.servlet.http.HttpSession;
 
 import sougou.exception.DatabaseException;
 import sougou.exception.SystemException;
@@ -359,8 +356,11 @@ public class OnlyDAO extends DAOBase {
             stmt.setString(1, userid);
             stmt.setString(2, friendid);
             ResultSet rs = stmt.executeQuery();
-            rs.next();
-            str=(rs.getString(DatabaseParameters.USER_ID));
+            if(rs.next()){
+            	str=(rs.getString(DatabaseParameters.USER_ID));
+            }else{
+            	str="NULL";
+            }
         }
         catch (SQLException e){
             throw new DatabaseException(
@@ -377,12 +377,12 @@ public class OnlyDAO extends DAOBase {
         PreparedStatement stmt = null;
         this.open();
         try {
-            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_USER_STATE);
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_FRIEND_STATE);
             stmt.setString(1, friendid);
             stmt.setString(2, userid);
             ResultSet rs = stmt.executeQuery();
             if(rs.next()){
-            	str=rs.getString(DatabaseParameters.FRIEND_ID);
+            	str=(rs.getString(DatabaseParameters.USER_ID));
             }else{
             	str="NULL";
             }

@@ -7,6 +7,7 @@ public class FriendBean implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String userid;
 	private String friendid;
+	private String check;
 	private Date createdate;
 	
 	public FriendBean() {
@@ -27,6 +28,14 @@ public class FriendBean implements Serializable {
 	
 	public void setFriendid(String friendid) {
 		this.friendid = friendid;
+	}
+	
+	public String getCheck() {
+		return check;
+	}
+	
+	public void setCheck(String check) {
+		this.check = check;
 	}
 	
 	public Date getCreatedate() {

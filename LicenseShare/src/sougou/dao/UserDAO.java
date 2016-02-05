@@ -54,6 +54,7 @@ public class UserDAO extends DAOBase {
                 FriendBean record = new FriendBean();
                 record.setUserid(rs.getString(DatabaseParameters.USER_ID));
                 record.setFriendid(rs.getString(DatabaseParameters.FRIEND_ID));
+                record.setCheck(rs.getString(DatabaseParameters.FRIEND_CHECK));
                 friendArray.addFriend(record);
             }
         }
@@ -141,12 +142,32 @@ public class UserDAO extends DAOBase {
 			stmt = con.prepareStatement(DatabaseParameters.SQL_INSERT_FRIEND);
 			stmt.setString(1, friend.getUserid());
 			stmt.setString(2, friend.getFriendid());
-			stmt.setString(3, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(friend.getCreatedate()));
+			stmt.setString(3, friend.getCheck());
+			stmt.setString(4, new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(friend.getCreatedate()));
 			stmt.executeUpdate();
 		}
 		catch(SQLException e){
 			throw new DatabaseException(
 					ExceptionParameters.FRIEND_ID_EXCEPTION_MESSAGE2, e);
+		}
+		finally{
+			this.close(stmt);
+		}
+	}
+	
+	public void updateFriend(FriendBean friend) throws DatabaseException,SystemException {
+		PreparedStatement stmt = null;
+		this.open();
+		try {
+			stmt = con.prepareStatement(DatabaseParameters.SQL_UPDATE_FRIEND);
+			stmt.setString(1, friend.getCheck());
+			stmt.setString(2, friend.getUserid());
+			stmt.setString(3, friend.getFriendid());
+			stmt.executeUpdate();
+		}
+		catch(SQLException e){
+			throw new DatabaseException(
+					ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
 		}
 		finally{
 			this.close(stmt);

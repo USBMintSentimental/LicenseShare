@@ -47,15 +47,15 @@ OnlyDAO only = new OnlyDAO();
 <br>
 <table border="1">
 <% 
-if(only.getFriendstate(userid,friendid).equals(request.getRemoteUser())){
+if(only.getFriendstate(userid,friendid).equals("NOT NULL")){
 	}else{
 		String error = "相手のIDを登録していません";
 		session.setAttribute("Error", error);
 		getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
 	}
-if(only.getUserstate(userid,friendid).equals(friendid)){
+if(only.getUserstate(userid,friendid).equals("NOT NULL")){
 	}else{
-		String error = "相手とのフレンド相互登録がされていません";
+		String error = "フレンド相互登録がされていません";
 		session.setAttribute("Error", error);
 		getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
 	}

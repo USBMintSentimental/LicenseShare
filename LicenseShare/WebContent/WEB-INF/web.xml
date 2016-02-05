@@ -6,7 +6,7 @@
   </welcome-file-list>
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>管理者</web-resource-name>
+      <web-resource-name>admin</web-resource-name>
       <url-pattern>/*</url-pattern>
     </web-resource-collection>
     <auth-constraint>
@@ -15,28 +15,40 @@
   </security-constraint>
   <security-constraint>
     <web-resource-collection>
-      <web-resource-name>ユーザー</web-resource-name>
+      <web-resource-name>user</web-resource-name>
+      <url-pattern>/FriendInsertServlet</url-pattern>
+      <url-pattern>/FriendUpdateServlet</url-pattern>
+      <url-pattern>/FriendDeleteServlet</url-pattern>
       <url-pattern>/UserLicenseInsertServlet</url-pattern>
+      <url-pattern>/UserLicenseDeleteServlet</url-pattern>
+      <url-pattern>/Browse</url-pattern>
       <url-pattern>/License</url-pattern>
+      <url-pattern>/AddFriendServlet</url-pattern>
       <url-pattern>/AddLicenseServlet</url-pattern>
       <url-pattern>/CountRankingServlet</url-pattern>
+      <url-pattern>/FriendServlet</url-pattern>
+      <url-pattern>/FriendMutualServlet</url-pattern>
       <url-pattern>/LicenseListServlet</url-pattern>
       <url-pattern>/PassRankingServlet</url-pattern>
       <url-pattern>/ProfileServlet</url-pattern>
       <url-pattern>/css/*</url-pattern>
       <url-pattern>/images/*</url-pattern>
       <url-pattern>/js/*</url-pattern>
+      <url-pattern>/addfriend.jsp</url-pattern>
       <url-pattern>/addlicense.jsp</url-pattern>
+      <url-pattern>/browse.jsp</url-pattern>
       <url-pattern>/config.jsp</url-pattern>
       <url-pattern>/countranking.jsp</url-pattern>
       <url-pattern>/error.jsp</url-pattern>
+      <url-pattern>/friend.jsp</url-pattern>
       <url-pattern>/index.jsp</url-pattern>
       <url-pattern>/license.jsp</url-pattern>
       <url-pattern>/licenselist.jsp</url-pattern>
       <url-pattern>/login.jsp</url-pattern>
       <url-pattern>/loginerror.jsp</url-pattern>
       <url-pattern>/logout.jsp</url-pattern>
-      <url-pattern>/othererror.jsp</url-pattern>
+      <url-pattern>/mutual.jsp</url-pattern>
+      <url-pattern>/parametererror.jsp</url-pattern>
       <url-pattern>/passranking.jsp</url-pattern>
       <url-pattern>/profile.jsp</url-pattern>
     </web-resource-collection>
@@ -47,6 +59,7 @@
   </security-constraint>
   <login-config>
     <auth-method>FORM</auth-method>
+    <realm-name>LicenseShare</realm-name>
     <form-login-config>
       <form-login-page>/login.jsp</form-login-page>
       <form-error-page>/loginerror.jsp</form-error-page>
@@ -58,7 +71,4 @@
   <security-role>
     <role-name>admin</role-name>
   </security-role>
-  <session-config>
-    <session-timeout>720</session-timeout>
-  </session-config>
 </web-app>

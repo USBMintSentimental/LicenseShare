@@ -15,7 +15,7 @@
 <script type="text/javascript"> 
 <!-- 
 function check(){
-	if(window.confirm('解除しますか？')){
+	if(window.confirm('登録しますか？')){
 		return true;
 	}else{
 		return false;
@@ -51,39 +51,22 @@ String userid = request.getRemoteUser();
 <div align="center">
 <br>
 <table border="1">
-<tr><th>フレンドID</th><th>フレンド名</th><th>解除</th></tr>
+<tr><th>フレンドID</th><th>フレンド名</th><th>登録</th></tr>
 <%
 ArrayList<FriendBean> friendArray = FriendDataBean.getFriendArray();
 for(FriendBean record : friendArray){
 	if(record.getFriendid().equals(userid)){
-		if(record.getCheck().equals("comp")){
+		if(record.getCheck().equals("null")){
 %>
 <tr>
 <td><div align="center"><%=record.getUserid()%></div></td>
 <td><div align="center"><a href="Browse?id=<%=record.getUserid()%>"><%=only.getUsername(record.getUserid())%></a></div></td>
 
 <td><div align="center">
-<form action="FriendDeleteServlet" method="post" onSubmit="return check()">
+<form action="FriendUpdateServlet" method="post" onSubmit="return check()">
 <input type="hidden" name="userid" value="<%=record.getUserid()%>">
 <input type="hidden" name="friendid" value="<%=record.getFriendid()%>">
-<input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
-</div></td>
-
-</tr>
-<%
-		}
-	}
-	if(record.getUserid().equals(userid)){
-		if(record.getCheck().equals("comp")){
-%>
-<tr>
-<td><div align="center"><%=record.getFriendid()%></div></td>
-<td><div align="center"><a href="Browse?id=<%=record.getFriendid()%>"><%=only.getUsername(record.getFriendid())%></a></div></td>
-
-<td><div align="center">
-<form action="FriendDeleteServlet" method="post" onSubmit="return check()">
-<input type="hidden" name="userid" value="<%=request.getRemoteUser()%>">
-<input type="hidden" name="friendid" value="<%=record.getFriendid()%>">
+<input type="hidden" name="check" value="comp">
 <input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
 </div></td>
 
