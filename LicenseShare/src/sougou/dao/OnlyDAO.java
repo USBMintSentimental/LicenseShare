@@ -396,4 +396,29 @@ public class OnlyDAO extends DAOBase {
         }
         return str;
     }
+	
+	public String getCheck(String userid,String friendid) throws DatabaseException,SystemException {
+        String str=null;
+        PreparedStatement stmt = null;
+        this.open();
+        try {
+            stmt = con.prepareStatement(DatabaseParameters.SQL_SELECT_FRIEND_CHECK);
+            stmt.setString(1, userid);
+            stmt.setString(2, friendid);
+            ResultSet rs = stmt.executeQuery();
+            if(rs.next()){
+            	str=(rs.getString(DatabaseParameters.FRIEND_CHECK));
+            }else{
+            	str="NG";
+            }
+        }
+        catch (SQLException e){
+            throw new DatabaseException(
+                    ExceptionParameters.DATABASE_CONNECTION_EXCEPTION_MESSAGE, e);
+        }
+        finally{
+            this.close(stmt);
+        }
+        return str;
+    }
 }

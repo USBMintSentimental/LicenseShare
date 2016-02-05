@@ -71,4 +71,7 @@ public class DatabaseParameters {
 	public static final String SQL_DELETE_FRIEND = "DELETE FROM Friend WHERE USER_ID=? AND FRIEND_ID=?";
 	
 	public static final String SQL_SELECT_FRIEND_STATE = "SELECT * FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
+	public static final String SQL_SELECT_FRIEND_CHECK = "SELECT * FROM FRIEND WHERE USER_ID=? AND FRIEND_ID=?";
+	
+	public static final String SQL_DELETE_FRIEND_DATA = "DELETE FROM Friend WHERE USER_ID=? OR FRIEND_ID=?";
 }

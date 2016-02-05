@@ -38,7 +38,12 @@ public class FriendInsertServlet extends HttpServlet {
 			friendBean.setFriendid(friendid);
 			friendBean.setCheck(check);
 			friendBean.setCreatedate(date);
-			if(only.getUserid(friendid).equals(friendid)){
+			if((only.getCheck(userid,friendid).equals("comp"))||(only.getCheck(friendid,userid).equals("comp"))||(only.getCheck(userid,friendid).equals("null"))||(only.getCheck(friendid,userid).equals("null"))){
+				String error = "既に登録されている、もしくは承認待ちです";
+				HttpSession session = request.getSession();
+				session.setAttribute("Error", error);
+				getServletContext().getRequestDispatcher("/error.jsp").forward(request,response);
+			}else if(only.getUserid(friendid).equals(friendid)){
 				dao.insertFriend(friendBean);
 				getServletContext().getRequestDispatcher("/index.jsp").forward(request,response);
 			}

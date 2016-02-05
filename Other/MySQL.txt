@@ -207,3 +207,9 @@ INSERT INTO License VALUES('Microsoft','M-174','Outlook 2007',6480,0,0,'2016/01/
 INSERT INTO License VALUES('Microsoft','M-191','Word 2007 Expert',6480,0,0,'2016/01/28');
 
 INSERT INTO License VALUES('Microsoft','M-192','Excel 2007 Expert',6480,0,0,'2016/01/28');
+
+insert into friend values('admin','user5','null','2016-04-04');
+insert into friend values('user1','user5','null','2016-04-04');
+insert into friend values('user2','user5','null','2016-04-04');
+insert into friend values('user3','user5','null','2016-04-04');
+insert into friend values('user4','user5','null','2016-04-04');

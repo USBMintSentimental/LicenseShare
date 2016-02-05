@@ -125,6 +125,10 @@ public class UserDAO extends DAOBase {
 				stmt = con.prepareStatement(DatabaseParameters.SQL_DELETE_USER);
 				stmt.setString(1, userid);
 				stmt.executeUpdate();
+				stmt = con.prepareStatement(DatabaseParameters.SQL_DELETE_FRIEND_DATA);
+				stmt.setString(1, userid);
+				stmt.setString(2, userid);
+				stmt.executeUpdate();
 			}
 			catch(SQLException e){
 				throw new DatabaseException(
