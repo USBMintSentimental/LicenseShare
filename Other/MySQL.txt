@@ -51,6 +51,7 @@ USER_ID VARCHAR(100) NOT NULL,
 
 FRIEND_ID VARCHAR(100) NOT NULL,
 
+FRIEND_CHECK VARCHAR(100) NOT NULL,
 CREATE_DATE DATE,
 
 PRIMARY KEY(USER_ID,FRIEND_ID)
@@ -110,10 +111,29 @@ INSERT INTO Role VALUES('admin','admin');
 
 
 
-INSERT INTO User VALUES('user','ユーザー','user',0);
+INSERT INTO User VALUES('user1','ユーザー1','user',0);
 
-INSERT INTO Role VALUES('user','user');
+INSERT INTO Role VALUES('user1','user');
 
+
+INSERT INTO User VALUES('user2','ユーザー2','user',0);
+
+INSERT INTO Role VALUES('user2','user');
+
+
+INSERT INTO User VALUES('user3','ユーザー3','user',0);
+
+INSERT INTO Role VALUES('user3','user');
+
+
+INSERT INTO User VALUES('user4','ユーザー4','user',0);
+
+INSERT INTO Role VALUES('user4','user');
+
+
+INSERT INTO User VALUES('user5','ユーザー5','user',0);
+
+INSERT INTO Role VALUES('user5','user');
 
 
 INSERT INTO Counter VALUES(0);
