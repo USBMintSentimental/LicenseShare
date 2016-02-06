@@ -1,0 +1,9 @@
+SELECT * FROM License;
+SELECT * FROM User;
+SELECT * FROM Friend;
+SELECT * FROM Syutoku;
+SELECT * FROM Role;
+SELECT * FROM Counter;
+
+DELETE FROM ? WHERE ?=?;
+UPDATE ? SET ?=? WHERE ?=?;

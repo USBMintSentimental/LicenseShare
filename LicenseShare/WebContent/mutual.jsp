@@ -15,7 +15,7 @@
 <script type="text/javascript"> 
 <!-- 
 function check(){
-	if(window.confirm('登録しますか？')){
+	if(window.confirm('拒否しますか？')){
 		return true;
 	}else{
 		return false;
@@ -51,7 +51,7 @@ String userid = request.getRemoteUser();
 <div align="center">
 <br>
 <table border="1">
-<tr><th>フレンドID</th><th>フレンド名</th><th>登録</th></tr>
+<tr><th>フレンドID</th><th>フレンド名</th><th>登録</th><th>拒否</th></tr>
 <%
 ArrayList<FriendBean> friendArray = FriendDataBean.getFriendArray();
 for(FriendBean record : friendArray){
@@ -67,6 +67,13 @@ for(FriendBean record : friendArray){
 <input type="hidden" name="userid" value="<%=record.getUserid()%>">
 <input type="hidden" name="friendid" value="<%=record.getFriendid()%>">
 <input type="hidden" name="check" value="comp">
+<input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
+</div></td>
+
+<td><div align="center">
+<form action="FriendDeleteServlet" method="post" onSubmit="return check()">
+<input type="hidden" name="userid" value="<%=record.getUserid()%>">
+<input type="hidden" name="friendid" value="<%=record.getFriendid()%>">
 <input type="submit" value="" style="WIDTH: 20px; HEIGHT: 20px"></form>
 </div></td>
 
@@ -89,17 +96,22 @@ for(FriendBean record : friendArray){
 <li><a href="index.jsp">ホーム</a></li>
 <li><a href="LicenseListServlet">資格一覧</a></li>
 <li><a href="AddLicenseServlet">資格追加</a></li>
-<li><a href="ProfileServlet">プロフィール</a></li>
+<li><a href="ProfileServlet">受験履歴</a></li>
 <li><a href="config.jsp">設定</a></li>
 <li><a href="logout.jsp">ログアウト</a></li>
 </ul>
 
 <%
-DecimalFormat df = new DecimalFormat("000000");
 only.setAccesscounter();
 %>
 <ul class="submenu mb10">
-<li><a href="#"><%= df.format(only.getAccesscounter()) %></a></li>
+<li><a href="#">累計:<%= only.getAccesscounter() %>人目</a></li>
+</ul>
+
+<ul class="submenu mb10">
+<li><a href="FriendServlet">友達一覧</a></li>
+<li><a href="addfriend.jsp">友達申請</a></li>
+<li><a href="FriendMutualServlet">友達認証</a></li>
 </ul>
 
 <ul class="submenu mb10">
@@ -107,11 +119,8 @@ only.setAccesscounter();
 <li><a href="PassRankingServlet">総所持資格ランキング</a></li>
 </ul>
 
-<ul class="submenu mb10">
-<li><a href="FriendServlet">友達</a></li>
-</ul>
-
 <%
+session.setMaxInactiveInterval(-1);
 if(request.isUserInRole("admin")==true){
 %>
 <ul class="submenu mb10">

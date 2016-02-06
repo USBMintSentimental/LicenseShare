@@ -59,7 +59,7 @@ OnlyDAO only = new OnlyDAO();
 only.setAccesscounter();
 %>
 <ul class="submenu mb10">
-<li><a href="#">累計:<%= session.getMaxInactiveInterval() %>人目</a></li>
+<li><a href="#">累計:<%= only.getAccesscounter() %>人目</a></li>
 </ul>
 
 <ul class="submenu mb10">
