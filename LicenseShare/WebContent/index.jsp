@@ -6,6 +6,7 @@
 <%@ page import="java.io.BufferedReader"%>
 <%@ page import="java.io.IOException"%>
 <% int i=(int)(Math.random()*StringParameters.length); %>
+<% int index=(int)(Math.random()*100); %>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>LicenseShare</title>
@@ -35,7 +36,17 @@ OnlyDAO only = new OnlyDAO();
 <h2>　</h2>
 <br>
 <p style="position: relative;">
-   <img src="images/index.png"><br>
+<%
+if(index>50){
+%>
+	<img src="images/index1.png"><br>
+<%
+}else{
+%>
+	<img src="images/index2.png"><br>
+<%
+}
+%>
    <span style="position: absolute; line-height: 150%; top: 30px; left: 35px; width: 340x; word-wrap: break-word;">
    <%= StringParameters.str[i] %>
    </span>
